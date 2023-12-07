@@ -1,0 +1,99 @@
+\documentclass[11pt,openany]{article}
+
+\input{custom_commands.tex}
+
+\setlength\parindent{0pt}
+
+\title{The Transverse Ising Model }
+\author{Mathieu Ferey}
+
+
+\begin{document}
+	
+\input{Front Page.tex}
+
+\section{Introduction}
+
+
+The Ising gauge theory, theory with a discrete $\mathds{Z}_2$ gauge symmetry in $2+1$-dimensions
+
+\begin{equation}
+	H_{\mathds{Z}_2} = -g\sum_{\vec{x},j}\sigma^x_j(\vec{x}) - \frac{1}{g}\sum_{\vec{x}}\sigma_1^z(\vec{x})\sigma_2^z(\vec{x}+e_1)\sigma_1^z(\vec{x}+e_2)\sigma_2^z(\vec{x}),
+\end{equation}
+
+where $\vec{x}$ refers to a position on the lattice, $j=1,2$ the two possible directions of a link, $\sigma_j^{x/z}(\vec{x})$ are the Pauli matrices, living on the links of the lattice. The local operator
+
+\begin{equation}
+	Q(\vec{x}) \equiv \sigma_1^x(\vec{x})\sigma_1^x(\vec{x}-e_1)\sigma_2^x(\vec{x})\sigma_2^x(\vec{x}-e_2)
+\end{equation}
+
+commutes with $H_{\mathds{Z}_2}$. It generates local gauge transformations. One can check that $Q^2=\mathds{1}$, so that the local symmetry of our problem is indeed $\mathds{Z}_2$. The operator
+
+\begin{equation}
+	\tau^z(\vec{r}) = \prod_{(\vec{x},j) \text{ pierced by } \gamma(\vec{r})}\sigma_j^x(\vec{x}),
+\end{equation}
+
+called the magnetic charge, is a gauge invariant quantity. $\gamma$ is an open path on the dual lattice. Since
+
+\begin{equation}
+	\left\{W_p^2(\vec{r}),\tau_z^2(\vec{r})\right\} = 0\text{ and }W_p^2(\vec{r}) = \tau_z^2(\vec{r}) = \mathds{1},
+\end{equation} 
+
+one can identify $W_p$ with the Pauli matrice $\tau^x$ on  the dual lattice.
+
+\begin{equation}
+	H = -\sum_{i=1}^N\tau^z_i\tau^z_{i+1} - g\sum\tau^x_j.
+\end{equation}
+
+where $i,j$ run over the dual lattice sites.
+
+Map it to a $d+1$-dim classical anisotropic Ising Model
+
+\begin{equation}
+	H_\mathrm{class} = -\frac{N_y\gamma}{\beta}\sum_{i=1}^N\sum_{j=1}^{N_y}\sigma_z^{(i,j)}\sigma_z^{(i,j+1)} - \sum_{i=1}^N\sum_{j=1}^{N_y}\sigma_z^{(i,j)}\sigma_z^{(i+1,j)},
+\end{equation}
+
+with $\gamma = -\frac{1}{2}\log\tanh{a}$, $a = \frac{-\beta g}{N_y}$.
+
+In general
+
+\begin{equation}
+	H = -J\sum_{i,j}S_i^zS_j^z - \Gamma\sum_iS_i^x,
+\end{equation}
+
+can be mapped to
+
+\begin{equation}
+	H_\mathrm{eff}(M) = -\sum_{k=1}^M\left[\frac{K}{M}\sum_{i,j}S_{ik}S_{jk} + K_M\sum_iS_{ik}S_{ik+1}\right],
+\end{equation}
+
+with $K_M = \dfrac{1}{2}\ln\left(\coth\left(\beta\Gamma/M\right)\right)$ and $K=J\beta$.
+
+\section{MCMC-MH}
+
+
+\begin{tcolorbox}[title=Metropolis-Hasting algorithm]
+	
+	\begin{enumerate}
+		
+		\item Select initial value $\theta_0$.
+		
+		\item For $i\in\left\{1,\cdots,N_\mathrm{sample}\right\}$:
+			\begin{itemize}
+				\item Draw candidate $\theta^*$ from proposal distribution $q(\theta^*|\theta_{i-1})$.
+				
+				\item Compute $\alpha = \dfrac{g(\theta^*)}{g(\theta_{i-1})}\dfrac{q(\theta_{i-1}|\theta^*)}{q(\theta^*|\theta_{i-1})}$.
+				
+				\item If $\alpha \geq 1$ accept $\theta^*$ by setting $\theta_i\leftarrow\theta^*$,\\
+				If $0 < \alpha <1$ accept $\theta^*$ with probability $\alpha$.
+			\end{itemize}
+		
+	\end{enumerate}
+	
+\end{tcolorbox}
+
+
+
+
+	
+\end{document}

@@ -1,0 +1,135 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+import scipy.stats as ss
+import scipy.linalg as lin
+import scipy.sparse as sp
+
+from tqdm import tqdm
+from scipy.special import gamma as Gamma
+from functools import partial
+
+from plot_tools import *
+
+
+def plot_lattice(lattice, N, Ny) :
+    
+    fig = plt.figure()
+    x = np.arange(0,N,1)
+    y = np.arange(0,Ny,1)
+
+    for i in range(N) :
+        for j in range(Ny) :
+            if lattice[i,j] == 1 :
+                color = 'r'
+            else :
+                color = 'b'
+            plt.scatter([x[i]],[y[j]],color=color)
+
+    plt.show()
+
+
+def random_lattice(N, Ny) :
+
+    lattice = np.array([[1 if np.random.uniform()<0.5 else -1 for i in range(N)] for j in range(Ny)])
+
+    return lattice
+
+
+def energy(lattice, N, Ny, g, beta):
+
+    a = beta*g/Ny
+    gamma = -np.log(np.tanh(a))
+
+    E = 0
+
+    lattice_periodic = np.zeros((N+1,Ny+1))
+    lattice_periodic[0:N,0:Ny] = lattice
+    lattice_periodic[-1,:-1] = lattice[0]
+    lattice_periodic[:-1,-1] = lattice[:,0]
+
+    for i in range(N) :
+        for j in range(Ny) :
+
+            ei =  -lattice_periodic[i,j]*(Ny*gamma/beta*lattice_periodic[i,j+1]+lattice_periodic[i+1,j])
+            E += ei
+
+    return E
+
+
+def calcEnergy(config, N, Ny, g): # regular Ising
+
+    energy = 0
+    for i in range(N):
+        for j in range(Ny):
+            S = config[i,j]
+            nb = config[(i+1)%N, j] + config[i,(j+1)%Ny] + config[(i-1)%N, j] + config[i,(j-1)%Ny]
+            energy += -nb*S
+    return g*energy/4.
+
+
+def MC_step(config, N, Ny, g, beta) : # flips one spins and accept the new config with a certain probability
+
+    candidate_lattice = np.copy(config)
+
+    #Eold = energy(candidate_lattice,N,Ny,g,beta)
+    Eold = calcEnergy(candidate_lattice,N,Ny,g)
+    # flip one randomly chosen site
+
+    a = np.random.randint(low=0,high=N)
+    b = np.random.randint(low=0,high=Ny)
+    candidate_lattice[a,b] = -candidate_lattice[a,b]
+
+    # compute the new energy
+
+    #Enew = energy(candidate_lattice,N,Ny,g,beta)
+    Enew = calcEnergy(candidate_lattice,N,Ny,g)
+
+    if Enew < Eold :
+         return candidate_lattice
+
+    else :
+
+        a = np.exp(-beta*(Enew-Eold))
+        
+        if np.random.uniform() < a: # accept candidate if alpha>=1 or accept candidate with proba alpha if 0<alpha<1
+
+            return candidate_lattice
+
+        else: return config
+
+
+N, Ny, beta, g = 500, 500, 10, 100
+
+
+lattice = random_lattice(N,Ny)
+
+fig,ax = plt.subplots()
+ax.set_aspect('equal')
+x = range(N)
+y = range(Ny)
+X,Y = np.meshgrid(range(N),range(Ny))
+pm = ax.pcolormesh(X,Y,lattice)
+
+'''
+for i in tqdm(range(100000)) :
+    lattice = MC_step(lattice,N,Ny,g,beta)
+
+pm.set_array(lattice.ravel())
+plt.show()
+'''
+
+
+def update(frame) :
+    
+    global lattice 
+    plt.title(str(frame))
+    lattice = MC_step(lattice,N,Ny,g,beta)
+    pm.set_array(lattice.ravel())
+
+anim =  animation.FuncAnimation(fig,update,frames=100000,interval=0.01,repeat=False)
+
+plt.show()
+anim.save('ising_ferro_100x100.gif')
+
+

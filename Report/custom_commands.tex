@@ -1,0 +1,79 @@
+\usepackage{amsfonts}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{titlesec}
+\usepackage{appendix}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{stmaryrd}
+\usepackage{circuitikz}
+\usepackage{cancel}
+\usepackage{slashed}
+\usepackage{appendix}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{url}
+\usepackage[most]{tcolorbox}
+\usepackage[margin=0.7in]{geometry}
+\usepackage[compat=1.1.0]{tikz-feynman}
+\usepackage[overload]{empheq}
+\usepackage{braket}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{lineno}
+\usepackage{xargs}
+\usepackage{svg}
+
+
+% better underbrace ==============================================
+
+\usetikzlibrary{decorations.pathreplacing}
+\makeatletter
+\def\underbrace#1{%
+	\@ifnextchar_{\tikz@@underbrace{#1}}{\tikz@@underbrace{#1}_{}}}
+\def\tikz@@underbrace#1_#2{%
+	\tikz[baseline=(a.base)] {\node[inner sep=0] (a) {\(\displaystyle #1\)};
+		\draw[line cap=round,decorate,decoration={brace,amplitude=5pt}]
+		(a.south east) -- node[below,inner sep=7pt] {\(\scriptstyle #2\)} (a.south west);}}
+\def\overbrace#1{%
+	\@ifnextchar^{\tikz@@overbrace{#1}}{\tikz@@overbrace{#1}^{}}}
+\def\tikz@@overbrace#1^#2{%
+	\tikz[baseline=(a.base)] {\node[inner sep=0] (a) {\(#1\)};
+		\draw[line cap=round,decorate,decoration={brace,amplitude=5pt}]
+		(a.north west) -- node[pos=.5,above,inner sep=7pt] {\(\scriptstyle #2\)} (a.north east);}}
+\makeatother
+
+
+% color box ==============================================================
+\usepackage{xcolor}
+
+% Syntax: \colorboxed[<color model>]{<color specification>}{<math formula>}
+\newcommand*{\colorboxed}{}
+\def\colorboxed#1#{%
+	\colorboxedAux{#1}%
+}
+\newcommand*{\colorboxedAux}[3]{%
+	% #1: optional argument for color model
+	% #2: color specification
+	% #3: formula
+	\begingroup
+	\colorlet{cb@saved}{.}%
+	\color#1{#2}%
+	\boxed{%
+		\color{cb@saved}%
+		#3%
+	}%
+	\endgroup
+}
+
+% miscellaneous commands
+
+\newcommand{\dd}[2]{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\newcommand{\dpart}[2]{\frac{\partial#1}{\partial#2}}
+\newcommandx{\intg}[4][2=,3=,4=]{\int\IfValueT{#3}{_{#3}}\IfValueT{#4}{^{#4}}\mathrm{d}\IfValueT{#2}{^{#2}}#1\hspace{1mm}}
+\newcommand{\feynint}[1]{\int\frac{\mathrm{d}^D#1}{\left(2\pi\right)^D}}
+\newcommand{\LL}{\mathrm{L}}
+\newcommand{\RR}{\mathrm{R}}
