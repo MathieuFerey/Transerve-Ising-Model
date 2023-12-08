@@ -7,15 +7,21 @@
 \title{The Transverse Ising Model }
 \author{Mathieu Ferey}
 
+\addbibresource{biblio.bib}
+
 
 \begin{document}
 	
 \input{Front Page.tex}
 
+
 \section{Introduction}
 
+\section{Theoretical background}
 
-The Ising gauge theory, theory with a discrete $\mathds{Z}_2$ gauge symmetry in $2+1$-dimensions
+\subsection{The $\mathds{Z}_2$ gauge theory and its Quantum Ising dual}
+
+The Ising gauge theory, theory with a discrete $\mathds{Z}_2$ gauge symmetry in $2+1$-dimensions \cite{fradkin}
 
 \begin{equation}
 	H_{\mathds{Z}_2} = -g\sum_{\vec{x},j}\sigma^x_j(\vec{x}) - \frac{1}{g}\sum_{\vec{x}}\sigma_1^z(\vec{x})\sigma_2^z(\vec{x}+e_1)\sigma_1^z(\vec{x}+e_2)\sigma_2^z(\vec{x}),
@@ -47,27 +53,107 @@ one can identify $W_p$ with the Pauli matrice $\tau^x$ on  the dual lattice.
 
 where $i,j$ run over the dual lattice sites.
 
-Map it to a $d+1$-dim classical anisotropic Ising Model
+
+\subsection{The classical mapping of the Quantum Ising Model}
+
+Our transverse Ising Model is not diagonal in the eigen-basis of $S^z$ and requires a quantum treatment. Luckily for us, a combination of clever tricks allows us to map the transverse field Ising Hamiltonian in $d$ dimensions to a classical anisotropic Ising Hamiltonian in $d+1$ dimensions \cite{Chakrabarti}. Let us demonstrate this in the case of the $1-D$ Quantum Ising model for simplicity. Its Hamiltonian simply reads
 
 \begin{equation}
-	H_\mathrm{class} = -\frac{N_y\gamma}{\beta}\sum_{i=1}^N\sum_{j=1}^{N_y}\sigma_z^{(i,j)}\sigma_z^{(i,j+1)} - \sum_{i=1}^N\sum_{j=1}^{N_y}\sigma_z^{(i,j)}\sigma_z^{(i+1,j)},
+	H = -J\sum_{i=1}^N S_i^zS_{i+1}^z - \Gamma\sum_{i=1}^N S_i^x.
 \end{equation}
 
-with $\gamma = -\frac{1}{2}\log\tanh{a}$, $a = \frac{-\beta g}{N_y}$.
-
-In general
+The thermodynamical properties of this system can all be derived through its partition function $Z = \mathrm{Tr}\exp(-\beta H)$, with $\beta=1/k_BT$. Everything starts with the Trotter formula \cite{trotter}:
 
 \begin{equation}
-	H = -J\sum_{i,j}S_i^zS_j^z - \Gamma\sum_iS_i^x,
+	\exp\left(A_1+A_2\right) =  \lim_{M\to\infty}\left[\exp\left(A_1/M\right)\exp\left(A_2/M\right)\right]^M.
 \end{equation}
 
-can be mapped to
+Writing our Hamiltonian as $H = H_0 + V$, where $H_0$ is the spin-spin interaction and $V$ the action of the magnetic field, one can expand the partition function as follows (keeping the large $M$ limit implicit for neatness):
+
+\begin{align*}
+	Z &= \mathrm{Tr}e^{-\beta\left(H_0+V\right)}\\
+	&= \mathrm{Tr}\left[e^{-\beta H_0/M}e^{-\beta V/M}\right]^M\\
+	&= \sum_{\left\{S^1_1,\cdots,S^1_N\right\}}\bra{S^1_1,\cdots,S^1_N}e^{-\beta H_0/M}e^{-\beta V/M}\cdots\\
+	&\hspace{3cm}\times e^{-\beta H_0/M}e^{-\beta V/M}\ket{S^1_1,\cdots,S^1_N},
+\end{align*}
+
+where $\ket{S_i^1} = \ket{\pm1}_i$ is an eigenstates of $S_i^z$. The sum runs over all possible configurations for the lattice. Now, between each pair of exponential we can insert the identity in the form
 
 \begin{equation}
-	H_\mathrm{eff}(M) = -\sum_{k=1}^M\left[\frac{K}{M}\sum_{i,j}S_{ik}S_{jk} + K_M\sum_iS_{ik}S_{ik+1}\right],
+	\mathds{1} = \sum_{\left\{S^k_1,\cdots,S^k_N\right\}}\ket{S^k_1,\cdots,S^k_N}\bra{S^k_1,\cdots,S^k_N}.
 \end{equation}
 
-with $K_M = \dfrac{1}{2}\ln\left(\coth\left(\beta\Gamma/M\right)\right)$ and $K=J\beta$.
+The $k$ index, which simply labels one complete set of eigenstates of $S_z$, can be regarded as an additional dimension to our lattice (often referred to as the Trotter dimension). The spin $S_i^k$ can be understood the spin living on the $(i,k)$ site of a 2 dimensional lattice. Then
+
+\begin{equation}
+	Z = \sum_{\left\{S\right\}}\prod_{k=1}^M\bra{S^k_1,\cdots,S^k_N}e^{-\beta H_0/M}e^{-\beta V/M}\ket{S^{k+1}_1,\cdots,S^{k+1}_N},
+\end{equation}
+
+where we introduced periodic boundary conditions in the Trotter dimension, $\ket{S^{M+1}_1,\cdots,S^{M+1}_N} = \ket{S^1_1,\cdots,S^1_N}$ so as to match the braket sandwiching of the trace. We have use the shorthand $\sum_{\left\{S\right\}} = \sum_{\left\{S_1^1,\cdots,S_N^1\right\}}\cdots\sum_{\left\{S_1^M,\cdots,S_N^M\right\}}$, which is just a sum over all possible configurations of our 2D lattice. Now, the $H_0$ exponential is diagonal in the $\ket{S^k_1,\cdots,S^k_N}$ basis, so that, using its hermiticity
+
+\begin{equation}
+	\bra{S^k_1,\cdots,S^k_N}e^{-\beta H_0/M} = \exp\left[\frac{\beta J}{M}\sum_{i=1}^N S_i^k S_{i+1}^k\right]\bra{S^k_1,\cdots,S^k_N}.
+\end{equation}
+
+The second exponential now reads
+
+\begin{align*}
+	\bra{S^k_1,\cdots,S^k_N}e^{-\beta V/M}\ket{S^{k+1}_1,\cdots,S^{k+1}_N} &= \bra{S^k_1,\cdots,S^k_N}\exp\left[\frac{\beta\Gamma}{M}\sum_{i=1}^N S_i^x\right]\ket{S^{k+1}_1,\cdots,S^{k+1}_N}\\
+	&= \prod_{i=1}^N\bra{S_i^k}e^{\beta\Gamma S_i^x/M}\ket{S_i^{k+1}}.
+\end{align*}
+
+Here comes a trick, keeping in mind that $S^x$ just flips the spin and that $(S^x)^2=\mathds{1}$:
+
+\begin{align*}
+	\bra{S}e^{aS^x}\ket{S'} &= \bra{S}\left(\sum_{n=0}^\infty\frac{a^{2n}(S^x)^{2n}}{n!} + \sum_{n=0}^\infty\frac{a^{2n+1}(S^x)^{2n+1}}{n!}\right)\ket{S'}\\
+	&= \cosh{a}\braket{S,S'} + \sinh{a}\bra{S}S^x\ket{S'}\\
+	&= \cosh{a}\braket{S,S'} + \sinh{a}\braket{S,-S'}\\
+	&= \begin{cases}
+		&\cosh{a} \text{ if } S=S',\\
+		&\sinh{a} \text{ if } S=-S'.
+	\end{cases}
+\end{align*}
+
+Now, simply note that
+
+\begin{align*}
+	\left(\frac{1}{2}\sinh{2a}\right)^{1/2}\exp\left[\frac{SS'}{2}\ln\coth{a}\right] &= \sqrt{\sinh{a}\cosh{a}}\times
+		\begin{cases}
+			&\exp\left[\dfrac{1}{2}\ln\coth{a}\right] \text{ if } S=S'			\vspace{1mm}\\
+			&\exp\left[-\dfrac{1}{2}\ln\coth{a}\right] \text{ if } S=-S'
+		\end{cases}\\
+	& = \sqrt{\sinh{a}\cosh{a}}\times
+	\begin{cases}
+		&\sqrt{\cosh{a}/\sinh{a}} \text{ if } S=S'\\
+		&\sqrt{\sinh{a}/\cosh{a}} \text{ if } S=-S'
+	\end{cases}\\
+	&= \begin{cases}
+		&\cosh{a} \text{ if } S=S'\\
+		&\sinh{a} \text{ if } S=-S'
+	\end{cases}\\
+	&= \bra{S}e^{aS^x}\ket{S'}
+\end{align*}
+
+This was a long road, but we can finally put everything together.
+
+\begin{align*}
+	Z &= \sum_{\left\{S\right\}}\prod_{k=1}^M\prod_{i=1}^N\exp\left[\frac{\beta J}{M}S_i^kS_{i+1}^k\right]\left(\frac{1}{2}\sinh{2\beta\Gamma/M}\right)^{1/2}\exp\left[\frac{S_i^kS_i^{k+1}}{2}\ln\coth(\beta\Gamma/M)\right]\\
+	&= \left(\frac{1}{2}\sinh(2\beta\Gamma/M)\right)^{MN/2}\sum_{\left\{S\right\}}\exp\left[-\frac{\beta}{M}\left(-J\sum_{i=1}^N\sum_{k=1}^M S_i^k S_{i+1}^k - \frac{M}{2\beta}\ln\coth\left(\dfrac{\beta\Gamma}{M}\right)\sum_{i=1}^N\sum_{k=1}^M S_i^k S_i^{k+1}\right)\right]\\
+	&= C\hspace{1mm}\mathrm{Tr}\left[e^{-\beta_\mathrm{cl}H_\mathrm{eff}}\right],
+\end{align*}
+
+with the classical temperature $\beta_\mathrm{cl} = \beta/M$. Let us also abbreviate $K_M = \dfrac{1}{2\beta}\ln\coth\left(\dfrac{\beta\Gamma}{M}\right)$. In the large $M$ limit, the prefactor vanishes, so that it drops out of any physical observables (obtained by differentiating the logarithm of the partition function). One recognizes in $H_\mathrm{eff}$ the Hamiltonian of a classical (since the $S_i^k$ are just numbers) anisotropic Ising model without any magnetic field. The weird thing is that the coupling constant of the spin-spin interactions depend on the lattice size in the Trotter dimension and even on the temperature for the interactions along the Trotter dimension. The quantum Ising model dual to our $\mathds{Z}_2$ gauge Hamiltonian is two dimensional, the above result therefore needs to be generalized to higher dimensions. The quantum Ising model in 2D
+
+\begin{equation}
+	H = -J\sum_{i,j}S_{i,j}\left(S^z_{i+1,j} + S^z_{i,j+1}\right) -\Gamma\sum_{i,j}S^x_{i,j}
+\end{equation}
+
+can be mapped to the 3D classical anisotropic Ising model
+
+\begin{equation}
+	H_\mathrm{eff} = -\sum_{k=1}^M\sum_{i,j}\left[J S_{i,j,k}\left(S_{i+1,j,k} + S_{i,j+1,k}\right) + K_M S_{i,j,k}S_{i,j,k+1}\right]
+\end{equation}
+
 
 \section{MCMC-MH}
 
@@ -93,7 +179,6 @@ with $K_M = \dfrac{1}{2}\ln\left(\coth\left(\beta\Gamma/M\right)\right)$ and $K=
 \end{tcolorbox}
 
 
+\clearpage\printbibliography
 
-
-	
 \end{document}
