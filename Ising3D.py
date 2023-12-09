@@ -34,7 +34,7 @@ def energy3D(config, J, Gamma, beta) :
                 H1 += config[i,j,k]*(config[(i+1)%Nx,j,k] + config[i,(j+1)%Ny,k])
                 H2 += config[i,j,k]*config[i,j,(k+1)%Nz]
 
-    return -J*H1 - Km*H2
+    return -J/Nz*H1 - Km*H2
 
 
 def mag3D(config) :
@@ -44,9 +44,9 @@ def mag3D(config) :
 def delta_energy_flip3D(config, a, b, c, J, Gamma, beta) :
 
     Nx,Ny,Nz = np.shape(config)
-    Km = 0.5*Nz/beta*np.log(1/np.tanh(beta*Gamma/Nz))
+    Km = 0.5/beta*np.log(1/np.tanh(beta*Gamma/Nz))
 
-    dE = 2*config[a,b,c]*(J*(config[(a+1)%Nx,b,c] + config[a,(b+1)%Ny,c] + config[(a-1)%Nx,b,c] + config[a,(b-1)%Ny,c]) + Km*(config[a,b,(c+1)%Nz] + config[a,b,(c-1)%Nz]))
+    dE = 2*config[a,b,c]*(J/Nz*(config[(a+1)%Nx,b,c] + config[a,(b+1)%Ny,c] + config[(a-1)%Nx,b,c] + config[a,(b-1)%Ny,c]) + Km*(config[a,b,(c+1)%Nz] + config[a,b,(c-1)%Nz]))
     
     return dE
 
@@ -69,7 +69,7 @@ def MC_step3D(config, J, Gamma, beta) : # flips one spins and accept the new con
 
     else :
 
-        p = np.exp(-beta*dE/Nz)
+        p = np.exp(-beta*dE)
 
         if np.random.uniform() < p: # accept candidate if alpha>=1 or accept candidate with proba alpha if 0<alpha<1
 
@@ -134,4 +134,24 @@ def MC_configurations(Nx, Ny, Nz, J, Gamma, beta, Neq, Nsteps, plot_MC = False) 
     Et = E_burnin[Neq:]
 
     return Mt,Et
+
+
+def MC_averages(Nx, Ny, Nz, J, Gamma, T, Neq, Nsteps, plot_MC = []) : 
+
+    M = np.zeros((len(Gamma),len(T)))
+    E = np.zeros((len(Gamma),len(T)))
+    chi = np.zeros((len(Gamma),len(T)))
+
+    for i in range(len(Gamma)) :
+        gamma = Gamma[i]
+        for j in tqdm(range(len(T))) :
+            t = T[j]
+            plot = False
+            if i in plot_MC: plot = True
+            Mt,Et = MC_configurations(Nx,Ny,Nz,J,gamma,1/t,Neq,Nsteps,plot_MC=plot)
+            M[i,j] = np.sum(Mt)/Nsteps
+            E[i,j] = np.sum(Et)/Nsteps
+            chi[i,j] = (np.sum(Mt**2)/Nsteps - M[i,j]**2)/t
+
+    return M/(Nx*Ny*Nz),E/(Nx*Ny*Nz),chi/(Nx*Ny*Nz)
 

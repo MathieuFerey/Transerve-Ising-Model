@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.16.0 (TeX Live 2023)  (format=lualatex 2023.4.5)  8 DEC 2023 20:06
+This is LuaHBTeX, Version 1.16.0 (TeX Live 2023)  (format=lualatex 2023.4.5)  9 DEC 2023 20:40
  restricted system commands enabled.
 **Report.tex
 (./Report.tex
@@ -1655,7 +1655,7 @@ Package biblatex Info: Reference segment=0 on input line 13.
 LaTeX Info: Redefining \[ on input line 13.
 LaTeX Info: Redefining \] on input line 13.
 ("./Front Page.tex"
-<Images/hep-logo.png, id=63, 401.5pt x 401.5pt>
+<Images/hep-logo.png, id=71, 401.5pt x 401.5pt>
 File: Images/hep-logo.png Graphic file (type png)
 <use Images/hep-logo.png>
 Package luatex.def Info: Images/hep-logo.png  used on input line 19.
@@ -1682,7 +1682,7 @@ LaTeX Font Info:    Trying to load font information for U+dsrom on input line 2
 (/usr/local/texlive/2023/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 )
-<Images/eth_logo.png, id=64, 186.6975pt x 68.1747pt>
+<Images/eth_logo.png, id=72, 186.6975pt x 68.1747pt>
 File: Images/eth_logo.png Graphic file (type png)
 <use Images/eth_logo.png>
 Package luatex.def Info: Images/eth_logo.png  used on input line 37.
@@ -1690,59 +1690,70 @@ Package luatex.def Info: Images/eth_logo.png  used on input line 37.
  [1
 
 {/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}<./Images/
-hep-logo.png><./Images/eth_logo.png>])
+hep-logo.png><./Images/eth_logo.png>]) (./Report.toc)
+\tf@toc=\write6
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 22.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 22.
+\openout6 = Report.toc
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 22.
+(hyperref)                removing `math shift' on input line 23.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 23.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 23.
 
 
 warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
 [1]
-Overfull \hbox (9.66246pt too wide) in paragraph at lines 92--93
+Overfull \hbox (9.66246pt too wide) in paragraph at lines 93--94
 []\TU/lmr/m/n/10.95 where we in-tro-duced pe-ri-odic bound-ary con-di-tions in 
 the Trot-ter di-men-sion, $[] \OT1/cmr/m/n/10.95 = []$
  []
 
 
-Overfull \hbox (34.29672pt too wide) in paragraph at lines 92--93
+Overfull \hbox (34.29672pt too wide) in paragraph at lines 93--94
 \TU/lmr/m/n/10.95 so as to match the braket sand-wich-ing of the trace. We have use the short-hand $[][] \OT1/cmr/m/n/10.95 = [][] [] [][]$\TU/lmr/m/n/10.95 ,
  []
 
 [2] [3] [4] [5
 
 ] (./Report.aux)
-Package rerunfilecheck Info: File `Report.out' has not changed.
-(rerunfilecheck)             Checksum: 47D4EC8373910320ABE115EAE2FD247B;966.
+
+Package rerunfilecheck Warning: File `Report.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Report.out':
+(rerunfilecheck)             Before: 122B1FD6887D64A0E3DB360891A0BE5C;1360
+(rerunfilecheck)             After:  3C7E7160BAF905FA350C7D50C255CCB7;1572.
 Package logreq Info: Writing requests to 'Report.run.xml'.
 
 \openout1 = Report.run.xml
 )
 
 Here is how much of LuaTeX's memory you used:
- 73326 strings out of 478278
+ 73348 strings out of 478278
  100000,3417909 words of node,token memory allocated
- 1574 words of node memory still in use:
-   31 hlist, 2 vlist, 14 rule, 2 glue, 4 kern, 1 glyph, 126 attribute, 72 glue_s
-pec, 126 attribute_list, 2 write, 24 pdf_literal, 1 pdf_action, 24 pdf_colorstac
+ 1582 words of node memory still in use:
+   31 hlist, 2 vlist, 14 rule, 2 glue, 4 kern, 1 glyph, 128 attribute, 72 glue_s
+pec, 128 attribute_list, 2 write, 24 pdf_literal, 1 pdf_action, 24 pdf_colorstac
 k nodes
-   avail lists: 1:7,2:1407,3:356,4:118,5:730,6:78,7:5626,8:97,9:1983,10:8,11:247
+   avail lists: 1:7,2:1325,3:357,4:110,5:739,6:85,7:5825,8:97,9:1882,10:8,11:424
 
- 91562 multiletter control sequences out of 65536+600000
- 77 fonts using 5445159 bytes
+ 91568 multiletter control sequences out of 65536+600000
+ 78 fonts using 5576847 bytes
  104i,19n,101p,1895b,1153s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.ot
 f></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmromancaps10-reg
 ular.otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmroman10-
 italic.otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmroman8
 -regular.otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmroma
+n10-bold.otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmroma
 n12-regular.otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmr
 oman12-bold.otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmr
 oman10-regular.otf></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfon
@@ -1759,10 +1770,10 @@ sr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr
 cal/texlive/2023/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb></usr/lo
 cal/texlive/2023/texmf-dist/fonts/type1/public/doublestroke/dsrom12.pfb></usr/lo
 cal/texlive/2023/texmf-dist/fonts/type1/public/doublestroke/dsrom8.pfb>
-Output written on Report.pdf (6 pages, 258134 bytes).
+Output written on Report.pdf (6 pages, 265552 bytes).
 
-PDF statistics: 244 PDF objects out of 1000 (max. 8388607)
- 171 compressed objects within 2 object streams
- 42 named destinations out of 1000 (max. 131072)
- 296 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 272 PDF objects out of 1000 (max. 8388607)
+ 196 compressed objects within 2 object streams
+ 49 named destinations out of 1000 (max. 131072)
+ 312 words of extra memory for PDF output out of 10000 (max. 100000000)
 

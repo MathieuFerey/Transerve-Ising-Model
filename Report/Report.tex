@@ -14,6 +14,7 @@
 	
 \input{Front Page.tex}
 
+\tableofcontents
 
 \section{Introduction}
 
@@ -142,41 +143,66 @@ This was a long road, but we can finally put everything together.
 	&= C\hspace{1mm}\mathrm{Tr}\left[e^{-\beta_\mathrm{cl}H_\mathrm{eff}}\right],
 \end{align*}
 
-with the classical temperature $\beta_\mathrm{cl} = \beta/M$. Let us also abbreviate $K_M = \dfrac{1}{2\beta}\ln\coth\left(\dfrac{\beta\Gamma}{M}\right)$. In the large $M$ limit, the prefactor vanishes, so that it drops out of any physical observables (obtained by differentiating the logarithm of the partition function). One recognizes in $H_\mathrm{eff}$ the Hamiltonian of a classical (since the $S_i^k$ are just numbers) anisotropic Ising model without any magnetic field. The weird thing is that the coupling constant of the spin-spin interactions depend on the lattice size in the Trotter dimension and even on the temperature for the interactions along the Trotter dimension. The quantum Ising model dual to our $\mathds{Z}_2$ gauge Hamiltonian is two dimensional, the above result therefore needs to be generalized to higher dimensions. The quantum Ising model in 2D
+with the classical temperature $\beta_\mathrm{cl} = \beta/M$. Let us also abbreviate $K_M = \dfrac{1}{2\beta}\ln\coth\left(\dfrac{\beta\Gamma}{M}\right)$. In the large $M$ limit, the prefactor vanishes, so that it drops out of any physical observables (obtained by differentiating the logarithm of the partition function). One recognizes in $H_\mathrm{eff}$ the Hamiltonian of a classical (since the $S_i^k$ are just numbers) anisotropic Ising model without any magnetic field. The weird thing is that the coupling constant of the spin-spin interactions depend on the lattice size in the Trotter dimension and even on the temperature for the interactions along the Trotter dimension. The quantum Ising model dual to our $\mathds{Z}_2$ gauge Hamiltonian is two dimensional, the above result therefore needs to be generalized to higher dimensions. The quantum Ising model on a two dimensional $N_x\times N_y$ lattice
 
 \begin{equation}
-	H = -J\sum_{i,j}S_{i,j}\left(S^z_{i+1,j} + S^z_{i,j+1}\right) -\Gamma\sum_{i,j}S^x_{i,j}
+	H = -J\sum_{i,j}S_{i,j}\left(S^z_{i+1,j} + S^z_{i,j+1}\right) -\Gamma\sum_{i,j}S^x_{i,j},
 \end{equation}
 
-can be mapped to the 3D classical anisotropic Ising model
+can be mapped to the 3D classical anisotropic Ising model on a $N_x\times N_y \times N_z$ lattice
 
 \begin{equation}
-	H_\mathrm{eff} = -\sum_{k=1}^M\sum_{i,j}\left[J S_{i,j,k}\left(S_{i+1,j,k} + S_{i,j+1,k}\right) + K_M S_{i,j,k}S_{i,j,k+1}\right]
+	H_\mathrm{eff} = -\sum_{k=1}^{N_z}\sum_{i,j}\left[J S_{i,j,k}\left(S_{i+1,j,k} + S_{i,j+1,k}\right) + K_{N_z} S_{i,j,k}S_{i,j,k+1}\right]
 \end{equation}
 
 
-\section{MCMC-MH}
+\section{Metropolis-Hasting Monte-Carlo algorithm}
 
+We have derived a classical Ising Hamiltonian which shares, up to a constant, the same partition function with the quantum model. We should therefore be able to study its thermodynamical properties, mainly its phase transitions, through a simple Monte-Carlo algorithm, which naively works as follows:
 
 \begin{tcolorbox}[title=Metropolis-Hasting algorithm]
 	
 	\begin{enumerate}
 		
-		\item Select initial value $\theta_0$.
+		\item Generate a random configuration.
 		
-		\item For $i\in\left\{1,\cdots,N_\mathrm{sample}\right\}$:
+		\item Spin one randomly chosen spin on the lattice and compute the change in energy $dE$.
 			\begin{itemize}
-				\item Draw candidate $\theta^*$ from proposal distribution $q(\theta^*|\theta_{i-1})$.
+				\item If $dE<0$: accept this new configuration.
 				
-				\item Compute $\alpha = \dfrac{g(\theta^*)}{g(\theta_{i-1})}\dfrac{q(\theta_{i-1}|\theta^*)}{q(\theta^*|\theta_{i-1})}$.
-				
-				\item If $\alpha \geq 1$ accept $\theta^*$ by setting $\theta_i\leftarrow\theta^*$,\\
-				If $0 < \alpha <1$ accept $\theta^*$ with probability $\alpha$.
+				\item Else: accept the configuration with probability $\exp\left(-\beta dE\right)$, otherwise reject it.
 			\end{itemize}
+		
+		\item Repeat until the required number of configurations have been generated.
+		
+		\item Ditch the first $N_\mathrm{eq}$ generated configurations before reaching equilibrium
 		
 	\end{enumerate}
 	
 \end{tcolorbox}
+
+The Metropolis procedure was specifically designed to generate a sample configurations according to their probability distribution. One can then compute averages without worrying about computing the partition function of the system:
+
+\begin{equation}
+	\langle O\rangle = \frac{1}{N_\mathrm{sample}}\sum_\mathrm{sample} O.
+\end{equation}
+
+A few subtleties have to be taken into account. The time taken by the Metropolis algorithm to reach equilibrium -that is to say the number of steps required to generate configurations with the proper probability distribution- is not easy to guess, and has to be adjusted "by hand" quite qualitatively. One can for example plot the evolution of desired observables as the Monte-Carlo sampling goes on. We can however expect typical behaviours.
+
+\begin{itemize}
+	
+	\item The bigger the lattice, the more steps will be required to thoroughly explore the space of configurations (of which there are $2^{N_xN_yN_z}$!). This is troublesome in our case since the classical mapping only holds in the large $N_z$ limit. This can be partially solved by the means of cluster methods, where the Metropolis update consists of flipping whole chunks of spins at the same time. Computing the change in energy will however naively requires going through the whole lattice, with complexity $\mathcal{O}\left(N_xN_yN_z\right)$, which might be too costly for thousands of Metropolis updates.
+	
+	\item Disordered phases (for example at high temperatures) will naively require less steps to reach equilibrium, since we can expect the initial random configuration to quite likely with respect to the actual distribution.
+	
+\end{itemize}
+
+
+\section{Results}
+
+\subsection{Phase transitions}
+
+\section{Closing remarks and perspectives}
 
 
 \clearpage\printbibliography
