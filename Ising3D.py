@@ -20,10 +20,10 @@ def random_lattice3D(Nx, Ny, Nz) :
     return lattice
 
 
-def energy3D(config, J, Gamma, beta_cl) :
+def energy3D(config, J, Gamma, beta) :
 
     Nx,Ny,Nz = np.shape(config)
-    Km = 0.5/beta_cl*np.log(1/np.tanh(beta_cl*Gamma))
+    Km = 0.5*Nz/beta*np.log(1/np.tanh(beta*Gamma/Nz))
 
     H1 = 0
     H2 = 0
@@ -41,17 +41,17 @@ def mag3D(config) :
     return np.sum(config)
 
 
-def delta_energy_flip3D(config, a, b, c, J, Gamma, beta_cl) :
+def delta_energy_flip3D(config, a, b, c, J, Gamma, beta) :
 
     Nx,Ny,Nz = np.shape(config)
-    Km = 0.5/beta_cl*np.log(1/np.tanh(beta_cl*Gamma))
+    Km = 0.5*Nz/beta*np.log(1/np.tanh(beta*Gamma/Nz))
 
     dE = 2*config[a,b,c]*(J*(config[(a+1)%Nx,b,c] + config[a,(b+1)%Ny,c] + config[(a-1)%Nx,b,c] + config[a,(b-1)%Ny,c]) + Km*(config[a,b,(c+1)%Nz] + config[a,b,(c-1)%Nz]))
     
     return dE
 
 
-def MC_step3D(config, J, Gamma, beta_cl) : # flips one spins and accept the new config with a certain probability
+def MC_step3D(config, J, Gamma, beta) : # flips one spins and accept the new config with a certain probability
 
     Nx,Ny,Nz = np.shape(config)
 
@@ -61,7 +61,7 @@ def MC_step3D(config, J, Gamma, beta_cl) : # flips one spins and accept the new 
     b = np.random.randint(low=0,high=Ny)
     c = np.random.randint(low=0,high=Nz)
 
-    dE = delta_energy_flip3D(config,a,b,c,J,Gamma,beta_cl)
+    dE = delta_energy_flip3D(config,a,b,c,J,Gamma,beta)
 
     if dE<0 :
         config[a,b,c] *= -1
@@ -69,7 +69,7 @@ def MC_step3D(config, J, Gamma, beta_cl) : # flips one spins and accept the new 
 
     else :
 
-        p = np.exp(-beta_cl*dE)
+        p = np.exp(-beta*dE/Nz)
 
         if np.random.uniform() < p: # accept candidate if alpha>=1 or accept candidate with proba alpha if 0<alpha<1
 
@@ -82,17 +82,17 @@ def MC_step3D(config, J, Gamma, beta_cl) : # flips one spins and accept the new 
             return config,dE,False
 
 
-def MC_configurations(Nx, Ny, Nz, J, Gamma, beta_cl, Neq, Nsteps, plot_MC = False) : # generate Nsteps spin configurations with the MC algorithm with Neq equilibration steps 
+def MC_configurations(Nx, Ny, Nz, J, Gamma, beta, Neq, Nsteps, plot_MC = False) : # generate Nsteps spin configurations with the MC algorithm with Neq equilibration steps 
 
     M_burnin = np.zeros(Neq+Nsteps)        
     E_burnin = np.zeros(Neq+Nsteps+1)
 
     config = random_lattice3D(Nx,Ny,Nz)
-    E_burnin[0] = energy3D(config,J,Gamma,beta_cl)
+    E_burnin[0] = energy3D(config,J,Gamma,beta)
 
     # reach equilibrium
     for j in range(Neq) :
-        config,dE,accepted = MC_step3D(config,J,Gamma,beta_cl)
+        config,dE,accepted = MC_step3D(config,J,Gamma,beta)
         M_burnin[j] = np.abs(mag3D(config))
         if accepted :
             E_burnin[1+j] = E_burnin[j] + dE
@@ -101,7 +101,7 @@ def MC_configurations(Nx, Ny, Nz, J, Gamma, beta_cl, Neq, Nsteps, plot_MC = Fals
 
     # sample for average
     for k in range(Nsteps) :
-        config,dE,accepted = MC_step3D(config,J,Gamma,beta_cl)
+        config,dE,accepted = MC_step3D(config,J,Gamma,beta)
         M_burnin[Neq+k] = np.abs(mag3D(config))
         if accepted :
             E_burnin[Neq+1+k] = E_burnin[Neq+1+k-1] + dE
@@ -119,6 +119,8 @@ def MC_configurations(Nx, Ny, Nz, J, Gamma, beta_cl, Neq, Nsteps, plot_MC = Fals
         ax[0].set_xscale('log')
         ax[1].set_xscale('log')
 
+        ax[0].set_xlim([1,Neq+Nsteps])
+        ax[1].set_xlim([1,Neq+Nsteps+1])
         ax[0].set_ylim([np.min(M_burnin/(Nx*Ny*Nz))-0.1,np.max(M_burnin/(Nx*Ny*Nz))+0.1])
         ax[1].set_ylim([np.min(E_burnin/(Nx*Ny*Nz))-0.1,np.max(E_burnin/(Nx*Ny*Nz))+0.1])
 
