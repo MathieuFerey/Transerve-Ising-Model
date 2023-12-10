@@ -14,9 +14,11 @@
 	
 \input{Front Page.tex}
 
-\tableofcontents
+\tableofcontents\clearpage
 
 \section{Introduction}
+
+Particle physicists started to develop Quantum Field Theory on the lattice as a mean to perform non-perturbative computations. This proved particularly useful in Quantum Chromodynamics, in which perturbation theory breaks down at low energy due to the running of the constant. The lattice formulation of gauge theories more generally allows for remarkable analogies with statistical physics. In particular, it has been shown that a $\mathds{Z}_2$ gauge theory on a two dimensional lattice exhibits phase transitions \cite{Wegner}. Furthermore, there exits a duality relation between this gauge theory and the Ising model in a transverse field, making clearer the analogy with statistical mechanics. If there exits an analytical solution for this quantum Ising model in one dimension, its two dimensional counterparts appears to be trickier. Fortunately, it can be mapped to a classical Ising model with an additional dimension sharing the same critical behaviour, allowing for a classical Monte-Carlo simulation.
 
 \section{Theoretical background}
 
@@ -146,7 +148,7 @@ This was a long road, but we can finally put everything together.
 with the classical temperature $\beta_\mathrm{cl} = \beta/M$. Let us also abbreviate $K_M = \dfrac{1}{2\beta}\ln\coth\left(\dfrac{\beta\Gamma}{M}\right)$. In the large $M$ limit, the prefactor vanishes, so that it drops out of any physical observables (obtained by differentiating the logarithm of the partition function). One recognizes in $H_\mathrm{eff}$ the Hamiltonian of a classical (since the $S_i^k$ are just numbers) anisotropic Ising model without any magnetic field. The weird thing is that the coupling constant of the spin-spin interactions depend on the lattice size in the Trotter dimension and even on the temperature for the interactions along the Trotter dimension. The quantum Ising model dual to our $\mathds{Z}_2$ gauge Hamiltonian is two dimensional, the above result therefore needs to be generalized to higher dimensions. The quantum Ising model on a two dimensional $N_x\times N_y$ lattice
 
 \begin{equation}
-	H = -J\sum_{i,j}S_{i,j}\left(S^z_{i+1,j} + S^z_{i,j+1}\right) -\Gamma\sum_{i,j}S^x_{i,j},
+	H = -J\sum_{i,j}S^z_{i,j}\left(S^z_{i+1,j} + S^z_{i,j+1}\right) -\Gamma\sum_{i,j}S^x_{i,j},
 \end{equation}
 
 can be mapped to the 3D classical anisotropic Ising model on a $N_x\times N_y \times N_z$ lattice
@@ -154,6 +156,41 @@ can be mapped to the 3D classical anisotropic Ising model on a $N_x\times N_y \t
 \begin{equation}
 	H_\mathrm{eff} = -\sum_{k=1}^{N_z}\sum_{i,j}\left[J S_{i,j,k}\left(S_{i+1,j,k} + S_{i,j+1,k}\right) + K_{N_z} S_{i,j,k}S_{i,j,k+1}\right]
 \end{equation}
+
+
+\subsection{Phase transition}
+
+Let us look into some thermodynamical properties of the system. One defines the magnetisation per spin as
+
+\begin{equation}
+	m = \frac{1}{N}\sum_\mathrm{i,j,k}S_{i,j,k},
+\end{equation}
+
+where $N=N_xN_yN_z$ is the total number of spins. Thanks to our Monte-Carlo algorithm, we will be able to estimate its average
+
+\begin{equation}
+	\langle m\rangle = \frac{1}{N_\mathrm{samples}}\sum_\mathrm{samples} m_\mathrm{sample}.
+\end{equation}
+
+A nice observable is also the susceptibility of the system
+
+\begin{equation}
+	\chi = \dpart{m}{\Gamma} = \beta\left(\langle m^2\rangle - \langle m\rangle^2\right).
+\end{equation}
+
+It will prove particularly useful for probing phase transitions. The partition function of the $d+1$ classical Ising model reads $Z\propto\mathrm{Tr}\left[\exp\left(-\frac{\beta}{N_z}H_\mathrm{eff}\right)\right]$. Since $N_z\to\infty$, a thermal phase transition of the classical system at finite temperature $\beta_{\mathrm{cl}}=\beta/N_z$ should give rise to a phase transition at $T=0$ i the quantum system, namely a phase transition driven by quantum fluctuations rather than thermal fluctuations. In the $T=0$ limit, one can indeed expect two phases:
+
+\begin{itemize}
+	
+	\item $\Gamma/J \ll 1$: the Hamiltonian is dominated by $\displaystyle-J\sum_{\langle i,j\rangle}S^z_iS^z_j$.
+	
+	We have two degenerate ground states: all spins up or all spins down. This is a ferromagnetic ordered phase, with domain wall excitations.
+	
+	\item $\Gamma/J \gg 1$: the Hamiltonian is dominated by $\displaystyle-J\sum_iS^x_i$.
+	
+	We have one ground states, where all spins are aligned with the magnetic field (each in a state $\frac{1}{\sqrt{2}}\left(\ket{\uparrow}+\ket{\downarrow}\right)$). This a paramagnetic disordered phase, with quasi-particle excitations (i.e. single spin flips).
+	
+\end{itemize}
 
 
 \section{Metropolis-Hasting Monte-Carlo algorithm}
@@ -164,16 +201,18 @@ We have derived a classical Ising Hamiltonian which shares, up to a constant, th
 	
 	\begin{enumerate}
 		
-		\item Generate a random configuration.
+		\item Start from an initial configuration.
 		
-		\item Spin one randomly chosen spin on the lattice and compute the change in energy $dE$.
+		\item Sweep through the lattice. For as many spins as there are in the system, flip one randomly chosen spin on the lattice and compute the change in energy $dE$.
 			\begin{itemize}
 				\item If $dE<0$: accept this new configuration.
 				
 				\item Else: accept the configuration with probability $\exp\left(-\beta dE\right)$, otherwise reject it.
 			\end{itemize}
 		
-		\item Repeat until the required number of configurations have been generated.
+		During on sweep, we expect to have given most of the spins of the lattice a chance to flip. The configuration generated after one sweep is added to our sampling.
+		
+		\item Repeat the sweeps until the required number of configurations have been generated.
 		
 		\item Ditch the first $N_\mathrm{eq}$ generated configurations before reaching equilibrium
 		
@@ -184,25 +223,74 @@ We have derived a classical Ising Hamiltonian which shares, up to a constant, th
 The Metropolis procedure was specifically designed to generate a sample configurations according to their probability distribution. One can then compute averages without worrying about computing the partition function of the system:
 
 \begin{equation}
-	\langle O\rangle = \frac{1}{N_\mathrm{sample}}\sum_\mathrm{sample} O.
+	\langle O\rangle = \frac{1}{N_\mathrm{samples}}\sum_\mathrm{samples} O_\mathrm{sample},
 \end{equation}
 
-A few subtleties have to be taken into account. The time taken by the Metropolis algorithm to reach equilibrium -that is to say the number of steps required to generate configurations with the proper probability distribution- is not easy to guess, and has to be adjusted "by hand" quite qualitatively. One can for example plot the evolution of desired observables as the Monte-Carlo sampling goes on. We can however expect typical behaviours.
+with $O_\mathrm{sample}$ is the value of the observable $O$ for one sample generated by our Monte-Carlo procedure. A few subtleties have to be taken into account. The time taken by the Metropolis algorithm to reach equilibrium -that is to say the number of steps required to generate configurations with the proper probability distribution- is not easy to guess, and has to be adjusted "by hand" quite qualitatively. One can for example plot the evolution of desired observables as the Monte-Carlo sampling goes on. We can however expect typical behaviours.
 
 \begin{itemize}
 	
 	\item The bigger the lattice, the more steps will be required to thoroughly explore the space of configurations (of which there are $2^{N_xN_yN_z}$!). This is troublesome in our case since the classical mapping only holds in the large $N_z$ limit. This can be partially solved by the means of cluster methods, where the Metropolis update consists of flipping whole chunks of spins at the same time. Computing the change in energy will however naively requires going through the whole lattice, with complexity $\mathcal{O}\left(N_xN_yN_z\right)$, which might be too costly for thousands of Metropolis updates.
 	
-	\item Disordered phases (for example at high temperatures) will naively require less steps to reach equilibrium, since we can expect the initial random configuration to quite likely with respect to the actual distribution.
+	\item One as to choose a suitable initial configuration so as to minimize the equilibration time. Starting from a completely random configuration is not very smart when looking at ordered phases (for example at low temperature), since randomness mimics very high temperature behaviour. When looking at the evolution of a quantity with temperature, one can start at low temperature from a very ordered system (say all spins up), and use the last configuration generated when dealing with the next temperature point. We can therefore expect our configuration to be rather close to equilibrium, and therefore spare costly equilibration time.
 	
 \end{itemize}
 
 
 \section{Results}
 
-\subsection{Phase transitions}
+Our Monte-Carlo algorithm is quite slow, so that the $N_z\to \infty$ limit is worrying. The magnetic susceptibility of our system for different values of $N_z$ is displayed in Figure \ref{fig:transition_chi_nz}. A larger Trotter dimension makes the temperature phase transition sharper, as expected for finite-size systems. The value of the critical temperature does not seem to greatly change with $N_z$, so that sticking to small Trotter dimension will be sufficient to respect our classical mapping.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Plots/T_transition_chi_nz.pdf}
+	\caption{Susceptibility as a function of temperature for $\Gamma/J=1$ for a $2\times2\times N_z$ lattice.}
+	\label{fig:transition_chi_nz}
+\end{figure}
+
+Figure \ref{fig:T_transition} displays a thermal phase transition.
+ 
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\caption{}
+		\label{fig:T_m}
+		\includegraphics[width=\textwidth]{Plots/T_transition_m.pdf}
+	\end{subfigure}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\caption{}
+		\label{fig:T_chi}
+		\includegraphics[width=\textwidth]{Plots/T_transition_chi.pdf}
+	\end{subfigure}
+	\caption{Average magnetisation per spin \ref{fig:T_m} and susceptibility \ref{fig:T_chi} as a function of the transverse field for a $3\times3\times4$ lattice at temperature $\Gamma/J=1$. The system clearly exhibits a phase transition between a ferromagnetic and paramagnetic phase.}
+	\label{fig:T_transition}
+\end{figure}
+
+The real star of the show is of course $T=0$ phase transition, for which we want to compute magnetisation and susceptibility as a function of the field strength $\Gamma$. If there exists algorithms designed to analyze quantum system directly at $T=0$, such as Green's function Monte-Carlo, ours can only perform finite temperature computations. We can however simulate the system for decreasing values of $T$ and extrapolate the $T=0$ behaviour. Unfortunately, trouble arises from the singular behaviour of the interaction in the Trotter direction $K_{N_z} = \frac{1}{2\beta}\ln\coth(\beta\Gamma/M)$. Figure \ref{fig:gamma_transition} displays a nice phase transition at a finite temperature , not really approaching $T=0$.
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\caption{}
+		\label{fig:gamma_m}
+		\includegraphics[width=\textwidth]{Plots/gamma_transition_m.pdf}
+	\end{subfigure}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\caption{}
+		\label{fig:gamma_chi}
+		\includegraphics[width=\textwidth]{Plots/gamma_transition_chi.pdf}
+	\end{subfigure}
+	\caption{Average magnetisation per spin \ref{fig:gamma_m} and susceptibility \ref{fig:gamma_chi} as a function of the transverse field for a $4\times4\times10$ lattice at temperature $kT/J=1$. The system clearly exhibits a phase transition between a ferromagnetic and paramagnetic phase.}
+	\label{fig:gamma_transition}
+\end{figure}
 
 \section{Closing remarks and perspectives}
+
+A system as simple as the transverse Ising model hides plethora of numerical and physical complexity, which are difficult to explore in so little time -especially for the high-energy physics student I am, who has forgotten most of his statistical physics lectures. If we managed to perform Monte-Carlo simulations and recover critical behaviours, the algorithm is too slow to conduct a very thorough investigations of the thermodynamical properties of the Quantum Ising Model -for example draw a full phase diagram such as in \cite{Chakrabarti}. The numerical difficulties arising from the diverging behaviour of the interaction in the Trotter direction at low temperature forbids a true analysis of the ground state of the transverse Ising model, and forbids any further comparison with its dual $\mathds{Z}_2$ gauge-theory, which has been investigated using exact diagonalisation by another student attending the course.
 
 
 \clearpage\printbibliography

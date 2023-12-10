@@ -82,5 +82,27 @@
     \field{journaltitle}{Proc. Amer. Math. Soc. 10}
     \field{year}{1959}
   \endentry
+
+  \entry{Wegner}{article}{}
+    \name{author}{1}{}{%
+      {{hash=WFJ}{%
+         family={Wegner},
+         familyi={W\bibinitperiod},
+         given={Franz\bibnamedelima J.},
+         giveni={F\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{WFJ1}
+    \strng{fullhash}{WFJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{W}
+    \field{sortinithash}{W}
+    \field{title}{Duality in Generalized Ising Models and Phase Transitions
+  without Local Order Parameters}
+    \field{journaltitle}{J. Math. Phys.}
+    \field{month}{10}
+    \field{year}{1971}
+  \endentry
 \enddatalist
 \endinput

@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.16.0 (TeX Live 2023)  (format=lualatex 2023.4.5)  9 DEC 2023 20:40
+This is LuaHBTeX, Version 1.16.0 (TeX Live 2023)  (format=lualatex 2023.4.5)  10 DEC 2023 22:02
  restricted system commands enabled.
 **Report.tex
 (./Report.tex
@@ -1655,98 +1655,124 @@ Package biblatex Info: Reference segment=0 on input line 13.
 LaTeX Info: Redefining \[ on input line 13.
 LaTeX Info: Redefining \] on input line 13.
 ("./Front Page.tex"
-<Images/hep-logo.png, id=71, 401.5pt x 401.5pt>
+<Images/hep-logo.png, id=75, 401.5pt x 401.5pt>
 File: Images/hep-logo.png Graphic file (type png)
 <use Images/hep-logo.png>
 Package luatex.def Info: Images/hep-logo.png  used on input line 19.
 (luatex.def)             Requested size: 80.29857pt x 80.29857pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 24.
+<Images/eth_logo.png, id=76, 186.6975pt x 68.1747pt>
+File: Images/eth_logo.png Graphic file (type png)
+<use Images/eth_logo.png>
+Package luatex.def Info: Images/eth_logo.png  used on input line 37.
+(luatex.def)             Requested size: 256.55872pt x 93.69002pt.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 43.
 
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 24.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 43.
 
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+stmry on input line 2
-4.
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 4
+3.
 
-(/usr/local/texlive/2023/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
-LaTeX Font Info:    Trying to load font information for U+dsrom on input line 2
-4.
+(/usr/local/texlive/2023/texmf-dist/tex/latex/stmaryrd/Ustmry.fd) [1
+
+{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}<./Images/
+hep-logo.png><./Images/eth_logo.png>]) (./Report.toc
+LaTeX Font Info:    Trying to load font information for U+dsrom on input line 3
+.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
-)
-<Images/eth_logo.png, id=72, 186.6975pt x 68.1747pt>
-File: Images/eth_logo.png Graphic file (type png)
-<use Images/eth_logo.png>
-Package luatex.def Info: Images/eth_logo.png  used on input line 37.
-(luatex.def)             Requested size: 256.55872pt x 93.69002pt.
- [1
-
-{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}<./Images/
-hep-logo.png><./Images/eth_logo.png>]) (./Report.toc)
+))
 \tf@toc=\write6
 
 \openout6 = Report.toc
 
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 23.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 23.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 23.
-
-
 warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
 [1]
-Overfull \hbox (9.66246pt too wide) in paragraph at lines 93--94
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 25.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 25.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 25.
+
+[2
+
+]
+Overfull \hbox (9.66246pt too wide) in paragraph at lines 95--96
 []\TU/lmr/m/n/10.95 where we in-tro-duced pe-ri-odic bound-ary con-di-tions in 
 the Trot-ter di-men-sion, $[] \OT1/cmr/m/n/10.95 = []$
  []
 
 
-Overfull \hbox (34.29672pt too wide) in paragraph at lines 93--94
+Overfull \hbox (34.29672pt too wide) in paragraph at lines 95--96
 \TU/lmr/m/n/10.95 so as to match the braket sand-wich-ing of the trace. We have use the short-hand $[][] \OT1/cmr/m/n/10.95 = [][] [] [][]$\TU/lmr/m/n/10.95 ,
  []
 
-[2] [3] [4] [5
+[3] [4] [5]
+<Plots/T_transition_chi_nz.pdf, id=173, 462.528pt x 346.896pt>
+File: Plots/T_transition_chi_nz.pdf Graphic file (type pdf)
+<use Plots/T_transition_chi_nz.pdf>
+Package luatex.def Info: Plots/T_transition_chi_nz.pdf  used on input line 246.
+
+(luatex.def)             Requested size: 256.55872pt x 192.42897pt.
+ [6]
+<Plots/T_transition_m.pdf, id=188, 462.528pt x 346.896pt>
+File: Plots/T_transition_m.pdf Graphic file (type pdf)
+<use Plots/T_transition_m.pdf>
+Package luatex.def Info: Plots/T_transition_m.pdf  used on input line 259.
+(luatex.def)             Requested size: 230.90128pt x 173.17761pt.
+<Plots/T_transition_chi.pdf, id=189, 462.528pt x 346.896pt>
+File: Plots/T_transition_chi.pdf Graphic file (type pdf)
+<use Plots/T_transition_chi.pdf>
+Package luatex.def Info: Plots/T_transition_chi.pdf  used on input line 265.
+(luatex.def)             Requested size: 230.90128pt x 173.17761pt.
+<Plots/gamma_transition_m.pdf, id=195, 462.528pt x 346.896pt>
+File: Plots/gamma_transition_m.pdf Graphic file (type pdf)
+<use Plots/gamma_transition_m.pdf>
+Package luatex.def Info: Plots/gamma_transition_m.pdf  used on input line 279.
+(luatex.def)             Requested size: 230.90128pt x 173.17761pt.
+<Plots/gamma_transition_chi.pdf, id=196, 462.528pt x 346.896pt>
+File: Plots/gamma_transition_chi.pdf Graphic file (type pdf)
+<use Plots/gamma_transition_chi.pdf>
+Package luatex.def Info: Plots/gamma_transition_chi.pdf  used on input line 285
+.
+(luatex.def)             Requested size: 230.90128pt x 173.17761pt.
+ [7<./Plots/T_transition_chi_nz.pdf><./Plots/T_transition_m.pdf><./Plots/T_trans
+ition_chi.pdf>] [8<./Plots/gamma_transition_m.pdf><./Plots/gamma_transition_chi.
+pdf>] [9
 
 ] (./Report.aux)
-
-Package rerunfilecheck Warning: File `Report.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Report.out':
-(rerunfilecheck)             Before: 122B1FD6887D64A0E3DB360891A0BE5C;1360
-(rerunfilecheck)             After:  3C7E7160BAF905FA350C7D50C255CCB7;1572.
+Package rerunfilecheck Info: File `Report.out' has not changed.
+(rerunfilecheck)             Checksum: 4C6EDD3005FD0F6DC7A2B1C6852E342B;1567.
 Package logreq Info: Writing requests to 'Report.run.xml'.
 
 \openout1 = Report.run.xml
 )
 
 Here is how much of LuaTeX's memory you used:
- 73348 strings out of 478278
+ 73441 strings out of 478278
  100000,3417909 words of node,token memory allocated
- 1582 words of node memory still in use:
-   31 hlist, 2 vlist, 14 rule, 2 glue, 4 kern, 1 glyph, 128 attribute, 72 glue_s
-pec, 128 attribute_list, 2 write, 24 pdf_literal, 1 pdf_action, 24 pdf_colorstac
+ 1606 words of node memory still in use:
+   31 hlist, 2 vlist, 14 rule, 2 glue, 4 kern, 1 glyph, 134 attribute, 72 glue_s
+pec, 134 attribute_list, 2 write, 24 pdf_literal, 1 pdf_action, 24 pdf_colorstac
 k nodes
-   avail lists: 1:7,2:1325,3:357,4:110,5:739,6:85,7:5825,8:97,9:1882,10:8,11:424
-
- 91568 multiletter control sequences out of 65536+600000
- 78 fonts using 5576847 bytes
+   avail lists: 1:7,2:1204,3:306,4:102,5:706,6:70,7:7647,8:97,9:1730,10:21,11:57
+8
+ 91617 multiletter control sequences out of 65536+600000
+ 62 fonts using 4615263 bytes
  104i,19n,101p,1895b,1153s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.ot
 f></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmromancaps10-reg
@@ -1762,18 +1788,17 @@ ts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts
 ts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12
-.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
-></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></u
-sr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr
-/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/lo
-cal/texlive/2023/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb></usr/lo
-cal/texlive/2023/texmf-dist/fonts/type1/public/doublestroke/dsrom12.pfb></usr/lo
-cal/texlive/2023/texmf-dist/fonts/type1/public/doublestroke/dsrom8.pfb>
-Output written on Report.pdf (6 pages, 265552 bytes).
+r10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.
+pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb>
+</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
+usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr
+/local/texlive/2023/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb></usr
+/local/texlive/2023/texmf-dist/fonts/type1/public/doublestroke/dsrom12.pfb></usr
+/local/texlive/2023/texmf-dist/fonts/type1/public/doublestroke/dsrom8.pfb>
+Output written on Report.pdf (10 pages, 311614 bytes).
 
-PDF statistics: 272 PDF objects out of 1000 (max. 8388607)
- 196 compressed objects within 2 object streams
- 49 named destinations out of 1000 (max. 131072)
- 312 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 479 PDF objects out of 1000 (max. 8388607)
+ 297 compressed objects within 3 object streams
+ 63 named destinations out of 1000 (max. 131072)
+ 320 words of extra memory for PDF output out of 10000 (max. 100000000)
 

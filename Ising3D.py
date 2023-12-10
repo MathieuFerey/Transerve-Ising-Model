@@ -51,107 +51,100 @@ def delta_energy_flip3D(config, a, b, c, J, Gamma, beta) :
     return dE
 
 
-def MC_step3D(config, J, Gamma, beta) : # flips one spins and accept the new config with a certain probability
+def MC_step3D(config, J, Gamma, beta) : # perform a whole sweep of the lattice by flipping N times a randomly chosen spin and checking the likelihood of this new configuration
 
     Nx,Ny,Nz = np.shape(config)
 
-    # flip one randomly chosen site
+    for i in range(Nx*Ny*Nz) :
+        # flip one randomly chosen site
 
-    a = np.random.randint(low=0,high=Nx)
-    b = np.random.randint(low=0,high=Ny)
-    c = np.random.randint(low=0,high=Nz)
+        a = np.random.randint(low=0,high=Nx)
+        b = np.random.randint(low=0,high=Ny)
+        c = np.random.randint(low=0,high=Nz)
 
-    dE = delta_energy_flip3D(config,a,b,c,J,Gamma,beta)
+        dE = delta_energy_flip3D(config,a,b,c,J,Gamma,beta)
 
-    if dE<0 :
-        config[a,b,c] *= -1
-        return config,dE,True
-
-    else :
-
-        p = np.exp(-beta*dE)
-
-        if np.random.uniform() < p: # accept candidate if alpha>=1 or accept candidate with proba alpha if 0<alpha<1
-
+        if dE<0 :
             config[a,b,c] *= -1
 
-            return config,dE,True
-        
-        else: 
-            
-            return config,dE,False
+        else :
+
+            p = np.exp(-beta*dE)
+
+            if np.random.uniform() < p: # accept candidate if alpha>=1 or accept candidate with proba alpha if 0<alpha<1
+
+                config[a,b,c] *= -1            
+                
+    return config
 
 
-def MC_configurations(Nx, Ny, Nz, J, Gamma, beta, Neq, Nsteps, plot_MC = False) : # generate Nsteps spin configurations with the MC algorithm with Neq equilibration steps 
+def MC_configurations(Nx, Ny, Nz, J, Gamma, beta, Neq, Nsteps, initial_config, plot_MC = False) : # generate Nsteps spin configurations with the MC algorithm with Neq equilibration steps 
 
     M_burnin = np.zeros(Neq+Nsteps)        
-    E_burnin = np.zeros(Neq+Nsteps+1)
 
-    config = random_lattice3D(Nx,Ny,Nz)
-    E_burnin[0] = energy3D(config,J,Gamma,beta)
+    #config = random_lattice3D(Nx,Ny,Nz)
+    config = initial_config
 
     # reach equilibrium
     for j in range(Neq) :
-        config,dE,accepted = MC_step3D(config,J,Gamma,beta)
+        config = MC_step3D(config,J,Gamma,beta)
         M_burnin[j] = np.abs(mag3D(config))
-        if accepted :
-            E_burnin[1+j] = E_burnin[j] + dE
-        else :
-            E_burnin[1+j] = E_burnin[j]
 
     # sample for average
     for k in range(Nsteps) :
-        config,dE,accepted = MC_step3D(config,J,Gamma,beta)
+        config = MC_step3D(config,J,Gamma,beta)
         M_burnin[Neq+k] = np.abs(mag3D(config))
-        if accepted :
-            E_burnin[Neq+1+k] = E_burnin[Neq+1+k-1] + dE
-        else :
-            E_burnin[Neq+1+k] = E_burnin[Neq+1+k-1]
-
+    
     if plot_MC :
-        fig, ax = plt.subplots(1,2,figsize=(15,3))
-
-        ax[0].set_xlabel('MC step')
-        ax[1].set_xlabel('MC step')
-        ax[0].set_ylabel(r'$M/N$')
-        ax[1].set_ylabel(r'$E/N$')
-
-        ax[0].set_xscale('log')
-        ax[1].set_xscale('log')
-
-        ax[0].set_xlim([1,Neq+Nsteps])
-        ax[1].set_xlim([1,Neq+Nsteps+1])
-        ax[0].set_ylim([np.min(M_burnin/(Nx*Ny*Nz))-0.1,np.max(M_burnin/(Nx*Ny*Nz))+0.1])
-        ax[1].set_ylim([np.min(E_burnin/(Nx*Ny*Nz))-0.1,np.max(E_burnin/(Nx*Ny*Nz))+0.1])
-
-        ax[0].plot(range(1,Neq+Nsteps),M_burnin[1:]/(Nx*Ny*Nz))
-        ax[1].plot(range(1,Neq+Nsteps+1),E_burnin[1:]/(Nx*Ny*Nz))
-
-        ax[0].plot([Neq,Neq],[np.min(M_burnin/(Nx*Ny*Nz))-0.1,np.max(M_burnin/(Nx*Ny*Nz))+0.1],'--',color='black')
-        ax[1].plot([Neq,Neq],[np.min(E_burnin/(Nx*Ny*Nz))-0.1,np.max(E_burnin/(Nx*Ny*Nz))+0.1],'--',color='black')
+        create_plot('MC step',r'$M/N$',[0,Neq+Nsteps],ylim=[np.min(M_burnin/(Nx*Ny*Nz))-0.1,np.max(M_burnin/(Nx*Ny*Nz))+0.1])
+        plt.plot(range(Neq+Nsteps),M_burnin/(Nx*Ny*Nz))
+        plt.plot([Neq,Neq],[np.min(M_burnin/(Nx*Ny*Nz))-0.1,np.max(M_burnin/(Nx*Ny*Nz))+0.1],'--',color='black')
 
     Mt = M_burnin[Neq:]
-    Et = E_burnin[Neq:]
 
-    return Mt,Et
+    return Mt,config
 
 
 def MC_averages(Nx, Ny, Nz, J, Gamma, T, Neq, Nsteps, plot_MC = []) : 
 
     M = np.zeros((len(Gamma),len(T)))
-    E = np.zeros((len(Gamma),len(T)))
     chi = np.zeros((len(Gamma),len(T)))
+
+    last_config = np.ones((Nx,Ny,Nz))
 
     for i in range(len(Gamma)) :
         gamma = Gamma[i]
         for j in tqdm(range(len(T))) :
             t = T[j]
             plot = False
-            if i in plot_MC: plot = True
-            Mt,Et = MC_configurations(Nx,Ny,Nz,J,gamma,1/t,Neq,Nsteps,plot_MC=plot)
+            if j in plot_MC: plot = True
+            if i != 0 or j != 0 : Nequ = 0
+            else : Nequ=Neq
+            Mt,last_config = MC_configurations(Nx,Ny,Nz,J,gamma,1/t,Nequ,Nsteps,last_config,plot_MC=plot)
             M[i,j] = np.sum(Mt)/Nsteps
-            E[i,j] = np.sum(Et)/Nsteps
             chi[i,j] = (np.sum(Mt**2)/Nsteps - M[i,j]**2)/t
 
-    return M/(Nx*Ny*Nz),E/(Nx*Ny*Nz),chi/(Nx*Ny*Nz)
+    return M/(Nx*Ny*Nz),chi/(Nx*Ny*Nz)
+
+
+def MC_averages2(Nx, Ny, Nz, J, Gamma, T, Neq, Nsteps, plot_MC = []) : 
+
+    M = np.zeros((len(T),len(Gamma)))
+    chi = np.zeros((len(T),len(Gamma)))
+
+    last_config = np.ones((Nx,Ny,Nz))
+
+    for i in range(len(T)) :
+        t = T[i]
+        for j in tqdm(range(len(Gamma))) :
+            gamma = Gamma[j]
+            plot = False
+            if j in plot_MC: plot = True
+            if i != 0 or j != 0 : Nequ = 0
+            else : Nequ=Neq
+            Mt,last_config = MC_configurations(Nx,Ny,Nz,J,gamma,1/t,Nequ,Nsteps,last_config,plot_MC=plot)
+            M[i,j] = np.sum(Mt)/Nsteps
+            chi[i,j] = (np.sum(Mt**2)/Nsteps - M[i,j]**2)/t
+
+    return M/(Nx*Ny*Nz),chi/(Nx*Ny*Nz)
 
