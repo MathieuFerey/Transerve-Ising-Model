@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.16.0 (TeX Live 2023)  (format=lualatex 2023.4.5)  10 DEC 2023 22:02
+This is LuaHBTeX, Version 1.16.0 (TeX Live 2023)  (format=lualatex 2023.4.5)  11 DEC 2023 16:39
  restricted system commands enabled.
 **Report.tex
 (./Report.tex
@@ -1708,72 +1708,96 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 25.
 
+<Images/dual_lattice.png, id=106, 410.53375pt x 386.44376pt>
+File: Images/dual_lattice.png Graphic file (type png)
+<use Images/dual_lattice.png>
+Package luatex.def Info: Images/dual_lattice.png  used on input line 61.
+(luatex.def)             Requested size: 153.9368pt x 144.90425pt.
 [2
 
-]
-Overfull \hbox (9.66246pt too wide) in paragraph at lines 95--96
+] [3<./Images/dual_lattice.png>]
+Overfull \hbox (9.66246pt too wide) in paragraph at lines 109--110
 []\TU/lmr/m/n/10.95 where we in-tro-duced pe-ri-odic bound-ary con-di-tions in 
 the Trot-ter di-men-sion, $[] \OT1/cmr/m/n/10.95 = []$
  []
 
-
-Overfull \hbox (34.29672pt too wide) in paragraph at lines 95--96
-\TU/lmr/m/n/10.95 so as to match the braket sand-wich-ing of the trace. We have use the short-hand $[][] \OT1/cmr/m/n/10.95 = [][] [] [][]$\TU/lmr/m/n/10.95 ,
- []
-
-[3] [4] [5]
-<Plots/T_transition_chi_nz.pdf, id=173, 462.528pt x 346.896pt>
+[4] [5] [6]
+<Plots/MC.pdf, id=197, 462.528pt x 346.896pt>
+File: Plots/MC.pdf Graphic file (type pdf)
+<use Plots/MC.pdf>
+Package luatex.def Info: Plots/MC.pdf  used on input line 260.
+(luatex.def)             Requested size: 256.55872pt x 192.42897pt.
+<Plots/T_transition_chi_nz.pdf, id=199, 462.528pt x 346.896pt>
 File: Plots/T_transition_chi_nz.pdf Graphic file (type pdf)
 <use Plots/T_transition_chi_nz.pdf>
-Package luatex.def Info: Plots/T_transition_chi_nz.pdf  used on input line 246.
+Package luatex.def Info: Plots/T_transition_chi_nz.pdf  used on input line 269.
 
 (luatex.def)             Requested size: 256.55872pt x 192.42897pt.
- [6]
-<Plots/T_transition_m.pdf, id=188, 462.528pt x 346.896pt>
+ [7<./Plots/MC.pdf>]
+<Plots/T_transition_m.pdf, id=244, 462.528pt x 346.896pt>
 File: Plots/T_transition_m.pdf Graphic file (type pdf)
 <use Plots/T_transition_m.pdf>
-Package luatex.def Info: Plots/T_transition_m.pdf  used on input line 259.
+Package luatex.def Info: Plots/T_transition_m.pdf  used on input line 282.
 (luatex.def)             Requested size: 230.90128pt x 173.17761pt.
-<Plots/T_transition_chi.pdf, id=189, 462.528pt x 346.896pt>
+<Plots/T_transition_chi.pdf, id=245, 462.528pt x 346.896pt>
 File: Plots/T_transition_chi.pdf Graphic file (type pdf)
 <use Plots/T_transition_chi.pdf>
-Package luatex.def Info: Plots/T_transition_chi.pdf  used on input line 265.
+Package luatex.def Info: Plots/T_transition_chi.pdf  used on input line 288.
 (luatex.def)             Requested size: 230.90128pt x 173.17761pt.
-<Plots/gamma_transition_m.pdf, id=195, 462.528pt x 346.896pt>
-File: Plots/gamma_transition_m.pdf Graphic file (type pdf)
-<use Plots/gamma_transition_m.pdf>
-Package luatex.def Info: Plots/gamma_transition_m.pdf  used on input line 279.
-(luatex.def)             Requested size: 230.90128pt x 173.17761pt.
-<Plots/gamma_transition_chi.pdf, id=196, 462.528pt x 346.896pt>
-File: Plots/gamma_transition_chi.pdf Graphic file (type pdf)
-<use Plots/gamma_transition_chi.pdf>
-Package luatex.def Info: Plots/gamma_transition_chi.pdf  used on input line 285
+<Plots/gamma_transition_m_T.pdf, id=251, 462.528pt x 346.896pt>
+File: Plots/gamma_transition_m_T.pdf Graphic file (type pdf)
+<use Plots/gamma_transition_m_T.pdf>
+Package luatex.def Info: Plots/gamma_transition_m_T.pdf  used on input line 302
 .
 (luatex.def)             Requested size: 230.90128pt x 173.17761pt.
- [7<./Plots/T_transition_chi_nz.pdf><./Plots/T_transition_m.pdf><./Plots/T_trans
-ition_chi.pdf>] [8<./Plots/gamma_transition_m.pdf><./Plots/gamma_transition_chi.
-pdf>] [9
+<Plots/gamma_transition_chi_T.pdf, id=252, 462.528pt x 346.896pt>
+File: Plots/gamma_transition_chi_T.pdf Graphic file (type pdf)
+<use Plots/gamma_transition_chi_T.pdf>
+Package luatex.def Info: Plots/gamma_transition_chi_T.pdf  used on input line 3
+08.
+(luatex.def)             Requested size: 230.90128pt x 173.17761pt.
+
+
+LaTeX Warning: Reference `fig:gamma_m' on page 8 undefined on input line 310.
+
+
+LaTeX Warning: Reference `fig:gamma_chi' on page 8 undefined on input line 310.
+
+
+
+LaTeX Warning: Reference `fig:gamma_m' on page 8 undefined on input line 310.
+
+
+LaTeX Warning: Reference `fig:gamma_chi' on page 8 undefined on input line 310.
+
+
+[8<./Plots/T_transition_chi_nz.pdf><./Plots/T_transition_m.pdf><./Plots/T_transi
+tion_chi.pdf>] [9<./Plots/gamma_transition_m_T.pdf><./Plots/gamma_transition_chi
+_T.pdf>] [10
 
 ] (./Report.aux)
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `Report.out' has not changed.
-(rerunfilecheck)             Checksum: 4C6EDD3005FD0F6DC7A2B1C6852E342B;1567.
+(rerunfilecheck)             Checksum: 8199B7855759092F79F27B1E8D262C2E;1476.
 Package logreq Info: Writing requests to 'Report.run.xml'.
 
 \openout1 = Report.run.xml
 )
 
 Here is how much of LuaTeX's memory you used:
- 73441 strings out of 478278
+ 73485 strings out of 478278
  100000,3417909 words of node,token memory allocated
- 1606 words of node memory still in use:
-   31 hlist, 2 vlist, 14 rule, 2 glue, 4 kern, 1 glyph, 134 attribute, 72 glue_s
-pec, 134 attribute_list, 2 write, 24 pdf_literal, 1 pdf_action, 24 pdf_colorstac
+ 1634 words of node memory still in use:
+   31 hlist, 2 vlist, 14 rule, 2 glue, 4 kern, 1 glyph, 138 attribute, 72 glue_s
+pec, 138 attribute_list, 2 write, 24 pdf_literal, 3 pdf_action, 24 pdf_colorstac
 k nodes
-   avail lists: 1:7,2:1204,3:306,4:102,5:706,6:70,7:7647,8:97,9:1730,10:21,11:57
-8
- 91617 multiletter control sequences out of 65536+600000
+   avail lists: 1:7,2:1284,3:263,4:84,5:794,6:58,7:6633,8:98,9:1969,10:21,11:455
+
+ 91642 multiletter control sequences out of 65536+600000
  62 fonts using 4615263 bytes
- 104i,19n,101p,1895b,1153s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 104i,19n,101p,1895b,1548s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.ot
 f></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmromancaps10-reg
 ular.otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmroman10-
@@ -1795,10 +1819,10 @@ usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr
 /local/texlive/2023/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb></usr
 /local/texlive/2023/texmf-dist/fonts/type1/public/doublestroke/dsrom12.pfb></usr
 /local/texlive/2023/texmf-dist/fonts/type1/public/doublestroke/dsrom8.pfb>
-Output written on Report.pdf (10 pages, 311614 bytes).
+Output written on Report.pdf (11 pages, 336128 bytes).
 
-PDF statistics: 479 PDF objects out of 1000 (max. 8388607)
- 297 compressed objects within 3 object streams
- 63 named destinations out of 1000 (max. 131072)
+PDF statistics: 541 PDF objects out of 1000 (max. 8388607)
+ 331 compressed objects within 4 object streams
+ 70 named destinations out of 1000 (max. 131072)
  320 words of extra memory for PDF output out of 10000 (max. 100000000)
 
