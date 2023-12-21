@@ -17,7 +17,7 @@
 \endgroup
 
 \datalist[entry]{nty/global//global/global}
-  \entry{fradkin}{book}{}
+  \entry{Fradkin}{book}{}
     \name{author}{1}{}{%
       {{hash=FE}{%
          family={Fradkin},
@@ -58,25 +58,6 @@
     \field{year}{2019}
   \endentry
 
-  \entry{Chakrabarti}{book}{}
-    \list{publisher}{1}{%
-      {Springer Berlin Heidelberg}%
-    }
-    \field{labeltitlesource}{title}
-    \field{sortinit}{Q}
-    \field{sortinithash}{Q}
-    \verb{doi}
-    \verb 10.1007/978-3-540-49865-0_3
-    \endverb
-    \field{isbn}{978-3-540-49865-0}
-    \field{title}{Quantum Ising Phases and Transitions in Transverse Ising
-  Models}
-    \verb{url}
-    \verb https://doi.org/10.1007/978-3-540-49865-0_3
-    \endverb
-    \field{year}{1996}
-  \endentry
-
   \entry{trotter}{article}{}
     \name{author}{1}{}{%
       {{hash=TH}{%
@@ -96,52 +77,6 @@
     \field{title}{On the product of semi-groups of operators}
     \field{journaltitle}{Proc. Amer. Math. Soc. 10}
     \field{year}{1959}
-  \endentry
-
-  \entry{Vasseur}{misc}{}
-    \name{author}{1}{}{%
-      {{hash=VR}{%
-         family={Vasseur},
-         familyi={V\bibinitperiod},
-         given={Romain},
-         giveni={R\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{VR1}
-    \strng{fullhash}{VR1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{sortinit}{V}
-    \field{sortinithash}{V}
-    \field{title}{Special Topics: Solid State Physics, Lectures given at UMass
-  Amherst}
-    \verb{url}
-    \verb https://blogs.umass.edu/rvasseur/teaching/old/special-topics-solid-st
-    \verb ate-physics-p897-spring-2019/
-    \endverb
-    \field{year}{2019}
-  \endentry
-
-  \entry{Wegner}{article}{}
-    \name{author}{1}{}{%
-      {{hash=WFJ}{%
-         family={Wegner},
-         familyi={W\bibinitperiod},
-         given={Franz\bibnamedelima J.},
-         giveni={F\bibinitperiod\bibinitdelim J\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{WFJ1}
-    \strng{fullhash}{WFJ1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{sortinit}{W}
-    \field{sortinithash}{W}
-    \field{title}{Duality in Generalized Ising Models and Phase Transitions
-  without Local Order Parameters}
-    \field{journaltitle}{J. Math. Phys.}
-    \field{month}{10}
-    \field{year}{1971}
   \endentry
 \enddatalist
 \endinput

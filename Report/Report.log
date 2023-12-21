@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.16.0 (TeX Live 2023)  (format=lualatex 2023.4.5)  11 DEC 2023 16:47
+This is LuaHBTeX, Version 1.16.0 (TeX Live 2023)  (format=lualatex 2023.4.5)  18 DEC 2023 15:00
  restricted system commands enabled.
 **Report.tex
 (./Report.tex
@@ -1510,7 +1510,7 @@ Package: transparent-nometadata 2022-10-27 v1.5 Transparency via pdfTeX's color
  stack (HO)
 )))
 Package translations Info: No language package found. I am going to use `englis
-h' as default language. on input line 13.
+h' as default language. on input line 14.
 \@quotelevel=\count504
 \@quotereset=\count505
 
@@ -1521,31 +1521,31 @@ LaTeX Warning: Unused global option(s):
 (./Report.aux)
 \openout1 = Report.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 13.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
-3.
+4.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
 
 (/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1579,9 +1579,9 @@ Package caption Info: End \AtBeginDocument code.
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into 
 your preamble.
- on input line 13.
+ on input line 14.
 
-Package hyperref Info: Link coloring OFF on input line 13.
+Package hyperref Info: Link coloring OFF on input line 14.
 (./Report.out) (./Report.out)
 \@outlinefile=\write5
 
@@ -1593,7 +1593,7 @@ File: translations-basic-dictionary-english.trsl (english translation file `tra
 nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `english'. on input line 13.
+or `english'. on input line 14.
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
 
@@ -1614,8 +1614,8 @@ Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'Report.bbl' found.
 
 (./Report.bbl)
-Package biblatex Info: Reference section=0 on input line 13.
-Package biblatex Info: Reference segment=0 on input line 13.
+Package biblatex Info: Reference section=0 on input line 14.
+Package biblatex Info: Reference segment=0 on input line 14.
 \c@lstlisting=\count512
 
 *geometry* driver: auto-detecting
@@ -1652,8 +1652,8 @@ Package biblatex Info: Reference segment=0 on input line 13.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \[ on input line 13.
-LaTeX Info: Redefining \] on input line 13.
+LaTeX Info: Redefining \[ on input line 14.
+LaTeX Info: Redefining \] on input line 14.
 ("./Front Page.tex"
 <Images/hep-logo.png, id=75, 401.5pt x 401.5pt>
 File: Images/hep-logo.png Graphic file (type png)
@@ -1698,25 +1698,25 @@ warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
 [1]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 25.
+(hyperref)                removing `math shift' on input line 26.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 25.
+(hyperref)                removing `subscript' on input line 26.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 25.
+(hyperref)                removing `math shift' on input line 26.
 
 <Images/dual_lattice.png, id=107, 410.53375pt x 386.44376pt>
 File: Images/dual_lattice.png Graphic file (type png)
 <use Images/dual_lattice.png>
-Package luatex.def Info: Images/dual_lattice.png  used on input line 61.
+Package luatex.def Info: Images/dual_lattice.png  used on input line 62.
 (luatex.def)             Requested size: 153.9368pt x 144.90425pt.
 [2
 
 ] [3<./Images/dual_lattice.png>]
-Overfull \hbox (9.66246pt too wide) in paragraph at lines 109--110
+Overfull \hbox (9.66246pt too wide) in paragraph at lines 110--111
 []\TU/lmr/m/n/10.95 where we in-tro-duced pe-ri-odic bound-ary con-di-tions in 
 the Trot-ter di-men-sion, $[] \OT1/cmr/m/n/10.95 = []$
  []
@@ -1725,60 +1725,58 @@ the Trot-ter di-men-sion, $[] \OT1/cmr/m/n/10.95 = []$
 <Plots/MC.pdf, id=199, 462.528pt x 346.896pt>
 File: Plots/MC.pdf Graphic file (type pdf)
 <use Plots/MC.pdf>
-Package luatex.def Info: Plots/MC.pdf  used on input line 260.
+Package luatex.def Info: Plots/MC.pdf  used on input line 261.
 (luatex.def)             Requested size: 256.55872pt x 192.42897pt.
 <Plots/T_transition_chi_nz.pdf, id=201, 462.528pt x 346.896pt>
 File: Plots/T_transition_chi_nz.pdf Graphic file (type pdf)
 <use Plots/T_transition_chi_nz.pdf>
-Package luatex.def Info: Plots/T_transition_chi_nz.pdf  used on input line 269.
+Package luatex.def Info: Plots/T_transition_chi_nz.pdf  used on input line 270.
 
 (luatex.def)             Requested size: 256.55872pt x 192.42897pt.
  [7<./Plots/MC.pdf>]
 <Plots/T_transition_m.pdf, id=246, 462.528pt x 346.896pt>
 File: Plots/T_transition_m.pdf Graphic file (type pdf)
 <use Plots/T_transition_m.pdf>
-Package luatex.def Info: Plots/T_transition_m.pdf  used on input line 282.
+Package luatex.def Info: Plots/T_transition_m.pdf  used on input line 283.
 (luatex.def)             Requested size: 230.90128pt x 173.17761pt.
 <Plots/T_transition_chi.pdf, id=247, 462.528pt x 346.896pt>
 File: Plots/T_transition_chi.pdf Graphic file (type pdf)
 <use Plots/T_transition_chi.pdf>
-Package luatex.def Info: Plots/T_transition_chi.pdf  used on input line 288.
+Package luatex.def Info: Plots/T_transition_chi.pdf  used on input line 289.
 (luatex.def)             Requested size: 230.90128pt x 173.17761pt.
 <Plots/gamma_transition_m_T.pdf, id=253, 462.528pt x 346.896pt>
 File: Plots/gamma_transition_m_T.pdf Graphic file (type pdf)
 <use Plots/gamma_transition_m_T.pdf>
-Package luatex.def Info: Plots/gamma_transition_m_T.pdf  used on input line 302
+Package luatex.def Info: Plots/gamma_transition_m_T.pdf  used on input line 303
 .
 (luatex.def)             Requested size: 230.90128pt x 173.17761pt.
 <Plots/gamma_transition_chi_T.pdf, id=254, 462.528pt x 346.896pt>
 File: Plots/gamma_transition_chi_T.pdf Graphic file (type pdf)
 <use Plots/gamma_transition_chi_T.pdf>
 Package luatex.def Info: Plots/gamma_transition_chi_T.pdf  used on input line 3
-08.
+09.
 (luatex.def)             Requested size: 230.90128pt x 173.17761pt.
+ [8<./Plots/T_transition_chi_nz.pdf><./Plots/T_transition_m.pdf><./Plots/T_trans
+ition_chi.pdf>] [9<./Plots/gamma_transition_m_T.pdf><./Plots/gamma_transition_ch
+i_T.pdf>]
+warning  (file declaration-originality.pdf) (pdf inclusion): PDF inclusion: foun
+d PDF version '1.6', but at most version '1.5' allowed
+<declaration-originality.pdf, id=436, 597.55244pt x 845.0772pt>
+File: declaration-originality.pdf Graphic file (type pdf)
+<use declaration-originality.pdf>
+Package luatex.def Info: declaration-originality.pdf  used on input line 329.
+(luatex.def)             Requested size: 513.11745pt x 725.72064pt.
+<Images/signature.png, id=437, 252.2223pt x 136.5903pt>
+File: Images/signature.png Graphic file (type png)
+<use Images/signature.png>
+Package luatex.def Info: Images/signature.png  used on input line 335.
+(luatex.def)             Requested size: 153.9368pt x 83.36371pt.
 
+LaTeX Warning: Float too large for page by 31.9282pt on input line 337.
 
-LaTeX Warning: Reference `fig:gamma_m' on page 8 undefined on input line 310.
+[10
 
-
-LaTeX Warning: Reference `fig:gamma_chi' on page 8 undefined on input line 310.
-
-
-
-LaTeX Warning: Reference `fig:gamma_m' on page 8 undefined on input line 310.
-
-
-LaTeX Warning: Reference `fig:gamma_chi' on page 8 undefined on input line 310.
-
-
-[8<./Plots/T_transition_chi_nz.pdf><./Plots/T_transition_m.pdf><./Plots/T_transi
-tion_chi.pdf>] [9<./Plots/gamma_transition_m_T.pdf><./Plots/gamma_transition_chi
-_T.pdf>] [10
-
-] (./Report.aux)
-
-LaTeX Warning: There were undefined references.
-
+] [11<./declaration-originality.pdf><./Images/signature.png>] (./Report.aux)
 Package rerunfilecheck Info: File `Report.out' has not changed.
 (rerunfilecheck)             Checksum: 8199B7855759092F79F27B1E8D262C2E;1476.
 Package logreq Info: Writing requests to 'Report.run.xml'.
@@ -1787,15 +1785,15 @@ Package logreq Info: Writing requests to 'Report.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 73485 strings out of 478278
+ 73545 strings out of 478278
  100000,3417909 words of node,token memory allocated
- 1634 words of node memory still in use:
-   31 hlist, 2 vlist, 14 rule, 2 glue, 4 kern, 1 glyph, 138 attribute, 72 glue_s
-pec, 138 attribute_list, 2 write, 24 pdf_literal, 3 pdf_action, 24 pdf_colorstac
+ 1624 words of node memory still in use:
+   31 hlist, 2 vlist, 14 rule, 2 glue, 4 kern, 1 glyph, 137 attribute, 72 glue_s
+pec, 137 attribute_list, 2 write, 24 pdf_literal, 2 pdf_action, 24 pdf_colorstac
 k nodes
-   avail lists: 1:7,2:1284,3:271,4:84,5:794,6:59,7:6633,8:98,9:1969,10:21,11:455
+   avail lists: 1:7,2:1286,3:277,4:84,5:794,6:58,7:6633,8:98,9:1969,10:21,11:455
 
- 91642 multiletter control sequences out of 65536+600000
+ 91690 multiletter control sequences out of 65536+600000
  62 fonts using 4615263 bytes
  104i,19n,101p,1895b,1548s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmromancaps10-regul
@@ -1819,10 +1817,10 @@ usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr
 /local/texlive/2023/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb></usr
 /local/texlive/2023/texmf-dist/fonts/type1/public/doublestroke/dsrom12.pfb></usr
 /local/texlive/2023/texmf-dist/fonts/type1/public/doublestroke/dsrom8.pfb>
-Output written on Report.pdf (11 pages, 338431 bytes).
+Output written on Report.pdf (12 pages, 492876 bytes).
 
-PDF statistics: 542 PDF objects out of 1000 (max. 8388607)
- 332 compressed objects within 4 object streams
- 70 named destinations out of 1000 (max. 131072)
+PDF statistics: 575 PDF objects out of 1000 (max. 8388607)
+ 355 compressed objects within 4 object streams
+ 72 named destinations out of 1000 (max. 131072)
  320 words of extra memory for PDF output out of 10000 (max. 100000000)
 

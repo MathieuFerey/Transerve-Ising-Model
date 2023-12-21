@@ -1,6 +1,6 @@
 This is BibTeX, Version 0.99d (TeX Live 2023)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
-The top-level auxiliary file: Report.aux
+The top-level auxiliary file: Presentation.aux
 The style file: biblatex.bst
 Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
 Reallocated global_strs (elt_size=200001) to 20 items from 10.
@@ -17,7 +17,7 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Database file #1: Report-blx.bib
+Database file #1: Presentation-blx.bib
 Database file #2: biblio.bib
 I was expecting a `,' or a `}'---line 47 of file biblio.bib
  : 
@@ -27,45 +27,45 @@ I'm skipping whatever remains of this entry
 Biblatex version: 3.19
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-You've used 7 entries,
+You've used 4 entries,
             6399 wiz_defined-function locations,
-            1240 strings with 9832 characters,
-and the built_in function-call counts, 25847 in all, are:
-= -- 1656
-> -- 487
-< -- 224
-+ -- 511
-- -- 137
-* -- 1432
-:= -- 2226
+            1222 strings with 9328 characters,
+and the built_in function-call counts, 13824 in all, are:
+= -- 887
+> -- 292
+< -- 129
++ -- 295
+- -- 78
+* -- 683
+:= -- 1262
 add.period$ -- 0
-call.type$ -- 7
-change.case$ -- 139
-chr.to.int$ -- 48
-cite$ -- 12
-duplicate$ -- 2771
-empty$ -- 2612
-format.name$ -- 192
-if$ -- 5669
+call.type$ -- 4
+change.case$ -- 89
+chr.to.int$ -- 42
+cite$ -- 6
+duplicate$ -- 1448
+empty$ -- 1341
+format.name$ -- 97
+if$ -- 3055
 int.to.chr$ -- 0
-int.to.str$ -- 14
+int.to.str$ -- 8
 missing$ -- 0
-newline$ -- 143
-num.names$ -- 265
-pop$ -- 2016
+newline$ -- 81
+num.names$ -- 154
+pop$ -- 1031
 preamble$ -- 1
-purify$ -- 145
+purify$ -- 92
 quote$ -- 0
-skip$ -- 1114
+skip$ -- 652
 stack$ -- 0
-substring$ -- 2471
-swap$ -- 744
-text.length$ -- 150
-text.prefix$ -- 6
+substring$ -- 1241
+swap$ -- 390
+text.length$ -- 84
+text.prefix$ -- 3
 top$ -- 1
-type$ -- 226
+type$ -- 124
 warning$ -- 0
-while$ -- 291
+while$ -- 176
 width$ -- 0
-write$ -- 137
+write$ -- 78
 (There was 1 error message)

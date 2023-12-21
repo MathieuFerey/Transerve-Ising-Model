@@ -1,6 +1,7 @@
 \documentclass[11pt,openany]{article}
 
 \input{custom_commands.tex}
+%\usepackage{pdfpages}
 
 \setlength\parindent{0pt}
 
@@ -18,7 +19,7 @@
 
 \section{Introduction}
 
-Particle physicists started to develop Quantum Field Theory on the lattice as a mean to perform non-perturbative computations. This proved particularly useful in Quantum Chromodynamics, in which perturbation theory breaks down at low energy due to the running of the constant. The lattice formulation of gauge theories more generally allows for remarkable analogies with statistical physics. In particular, it has been shown that a $\mathds{Z}_2$ gauge theory on a two dimensional lattice exhibits phase transitions \cite{Wegner}. Furthermore, there exits a duality relation between this gauge theory and the Ising model in a transverse field, making clearer the analogy with statistical mechanics. If there exits an analytical solution for this quantum Ising model in one dimension, its two dimensional counterparts appears to be trickier. Fortunately, it can be mapped to a classical Ising model with an additional dimension sharing the same critical behaviour, allowing for a classical Monte-Carlo simulation. We have implemented it in Python. You can have a look at the $\mathrm{Display\_Notebook.ipynb}$ file in the Github repository \url{https://github.com/MathieuFerey/Transerve-Ising-Model}.
+Particle physicists started to develop Quantum Field Theory on the lattice as a mean to perform non-perturbative computations. This proved particularly useful in Quantum Chromodynamics, in which perturbation theory breaks down at low energy due to the running of the constant. The lattice formulation of gauge theories more generally allows for remarkable analogies with statistical physics. In particular, it has been shown that a $\mathds{Z}_2$ gauge theory on a two dimensional lattice exhibits phase transitions \cite{Wegner}. Furthermore, there exits a duality relation between this gauge theory and the Ising model in a transverse field, making clearer the analogy with statistical mechanics. If there exits an analytical solution for this quantum Ising model in one dimension, its two dimensional counterparts appears to be trickier. Fortunately, it can be mapped to a classical Ising model with an additional dimension sharing the same critical behaviour, allowing for a classical Monte-Carlo simulation. We have implemented it in Python. The reader can have a look at the $\mathrm{Display\_Notebook.ipynb}$ file in the Github repository \url{https://github.com/MathieuFerey/Transerve-Ising-Model}.
 
 \section{Theoretical background}
 
@@ -65,7 +66,7 @@ one can identify $\tau^x$ and $\tau^z$ as the Pauli matrices defined on  the dua
 One can check that the Hamiltonian on the dual lattice in terms of these operators reads
 
 \begin{equation}
-	H = -\sum_{i=1}^N\tau^z_i\tau^z_{i+1} - g\sum\tau^x_j,
+	H = -g\sum_{\vec{r},j}\tau^z(\vec{r})\tau^z(\vec{r}+e_j) - \frac{1}{g}\sum_{\vec{r}}\tau^x(\vec{r}),
 \end{equation}
 
 where $i,j$ run over the dual lattice sites. One recognizes the Ising model in a tranverse magnetic field (simply called the Transverse Ising Model, or the Quantum Ising Model) in two dimensions.
@@ -180,7 +181,7 @@ Let us look into some thermodynamical properties of the system. One defines the 
 	m = \frac{1}{N}\sum_\mathrm{i,j,k}S_{i,j,k},
 \end{equation}
 
-where $N=N_xN_yN_z$ is the total number of spins. Thanks to our Monte-Carlo algorithm, we will be able to estimate its average
+where $N=N_xN_yN_z$ is the total number of spins. Thanks to our Monte-Carlo algorithm, we will be able to estimate its average (see next section)
 
 \begin{equation}
 	\langle m\rangle = \frac{1}{N_\mathrm{samples}}\sum_\mathrm{samples} m_\mathrm{sample}.
@@ -287,7 +288,7 @@ Figure \ref{fig:T_transition} displays a thermal phase transition.
 		\label{fig:T_chi}
 		\includegraphics[width=\textwidth]{Plots/T_transition_chi.pdf}
 	\end{subfigure}
-	\caption{Average magnetisation per spin \ref{fig:T_m} and susceptibility \ref{fig:T_chi} as a function of the transverse field for a $3\times3\times4$ lattice at temperature $\Gamma/J=1$. The system clearly exhibits a phase transition between a ferromagnetic and paramagnetic phase.}
+	\caption{Average magnetisation per spin \ref{fig:T_m} and susceptibility \ref{fig:T_chi} as a function of the temperature for a $3\times3\times4$ lattice at $\Gamma/J=1$. The system clearly exhibits a phase transition between a ferromagnetic and paramagnetic phase.}
 	\label{fig:T_transition}
 \end{figure}
 
@@ -307,7 +308,7 @@ The real star of the show is of course $T=0$ phase transition, for which we want
 		\label{fig:gamma_chi_T}
 		\includegraphics[width=\textwidth]{Plots/gamma_transition_chi_T.pdf}
 	\end{subfigure}
-	\caption{Average magnetisation per spin \ref{fig:gamma_m} and susceptibility \ref{fig:gamma_chi} as a function of the transverse field for a $4\times4\times10$ lattice at temperature three different temperatures. The system clearly exhibits a phase transition between a ferromagnetic and paramagnetic phase.}
+	\caption{Average magnetisation per spin (\ref{fig:gamma_m_T}) and susceptibility (\ref{fig:gamma_chi_T}) as a function of the transverse field for a $4\times4\times10$ lattice at three different temperatures. The system clearly exhibits a phase transition between a ferromagnetic and paramagnetic phase.}
 	\label{fig:gamma_transition_T}
 \end{figure}
 
@@ -318,5 +319,22 @@ A system as simple as the transverse Ising model hides plethora of numerical and
 
 
 \clearpage\printbibliography
+
+
+%\includepdf[pages=-]{declaration-originality.pdf}
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\node[inner sep=0pt] (pdf) at (0,0){\includegraphics[width=\textwidth]{declaration-originality.pdf}};
+		\node (title) at (0,3.7){THE TRANSVERSE FIELD ISING MODEL};
+		\node (title) at (0,3.2){MONTE-CARLO SIMULATION OF QUANTUM PHASE TRANSITIONS};
+		\node (title) at (-6,0.2){FEREY};
+		\node (title) at (1,0.2){Mathieu};
+		\node (title) at (-5,-7){Dietlikon, 15/12/23};
+		\node[inner sep=0pt] (pdf) at (2.5,-8){\includegraphics[width=0.3\textwidth]{Images/signature.png}};
+	\end{tikzpicture}
+\end{figure}
+
 
 \end{document}
